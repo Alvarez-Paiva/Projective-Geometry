@@ -1,0 +1,11 @@
+{
+  "title": "Projective Geometry: an interactive course",
+  "upload_type": "lesson",
+  "description": "An interactive course on projective geometry. This release contains the inaugural lecture (first published on the web in 2001, web edition 2026) in English, French and Spanish, with twelve live constructions in CindyJS translated from the original Cinderella files. Online at https://alvarez-paiva.github.io/Projective-Geometry/",
+  "creators": [
+    {"name": "Álvarez Paiva, Juan Carlos", "affiliation": "Laboratoire Paul Painlevé, Université de Lille, France"}
+  ],
+  "license": "cc-by-sa-4.0",
+  "language": "eng",
+  "keywords": ["projective geometry", "cross ratio", "conics", "duality", "interactive geometry", "CindyJS"]
+}
