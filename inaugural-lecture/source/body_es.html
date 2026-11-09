@@ -1,0 +1,206 @@
+<header class="top">
+  <!--LANGS-->
+  <div class="kicker">Curso interactivo de geometría proyectiva · Lección inaugural</div>
+  <h1>Introducción a la geometría proyectiva</h1>
+  <div class="byline">Juan Carlos Álvarez Paiva</div>
+  <div class="affil">Laboratoire Paul Painlevé, Université de Lille, Francia</div>
+</header>
+<nav class="toc" aria-label="Contenido">
+  <ol>
+    <li><a href="#perspective"><b>1</b>La perspectiva</a></li>
+    <li><a href="#infinity"><b>2</b>El infinito y los invariantes</a></li>
+    <li><a href="#transformations"><b>3</b>Transformaciones proyectivas</a></li>
+    <li><a href="#cross-ratio"><b>4</b>La razón doble</a></li>
+    <li><a href="#duality"><b>5</b>El plano y la dualidad</a></li>
+    <li><a href="#conics"><b>6</b>Las cónicas</a></li>
+    <li><a href="#pascal"><b>7</b>Pascal y Brianchon</a></li>
+    <li><a href="#conclusion">Conclusión</a></li>
+  </ol>
+</nav>
+<main>
+
+<section id="perspective">
+<div class="prose">
+<p>Hace treinta años el estudio de la geometría proyectiva habría parecido algo así como el estudio del latín: bueno para el cerebro y una manera de mantener el contacto con los antiguos. Hoy, sin embargo, la geometría proyectiva es un tema popular entre matemáticos e informáticos. Esto se debe a las nuevas aplicaciones a la visión por computadora y al hecho de que la geometría y el pensamiento geométrico están de nuevo en auge. Además, la informática ha devuelto el favor proporcionando herramientas poderosas para la visualización y la difusión de las matemáticas. Las figuras interactivas, las animaciones y las páginas web enlazadas nos permiten presentar las matemáticas y, muy particularmente, la geometría de una manera impensable hace treinta años.</p>
+<p>En este curso estudiaremos la geometría proyectiva desde una perspectiva moderna y con herramientas modernas. Dedicaremos mucho esfuerzo al estudio de ideas generales que unifican la geometría, como las acciones de grupos, los espacios homogéneos, los invariantes, la dualidad, la compactificación, la complexificación y los espacios métricos. Para el estudiante de geometría será una ventaja estar armado con estas ideas antes de abordar otras más complejas como las conexiones, los fibrados, los espinores y los twistores. Por otra parte, estos conceptos abstractos se ilustrarán con construcciones geométricas de gran sencillez. Estas construcciones cobran vida al presentarse como figuras interactivas. Además, como estas construcciones, y de hecho el curso entero, están disponibles en internet, el estudiante puede aprovechar mejor el tiempo de clase para hacer preguntas, resolver problemas y ampliar sus horizontes.</p>
+<p>Pasemos ahora a una breve descripción del contenido de este curso. Hoy trataremos solamente las ideas más elementales y visuales, pero creo que bastará para darles una idea de lo que hay más allá.</p>
+</div>
+<h2><span class="n">1</span>La perspectiva</h2>
+<div class="prose">
+<p>Los arquitectos y pintores del Renacimiento se preguntaron cómo representar un objeto tridimensional sobre una superficie bidimensional. Los informáticos de hoy se preguntan cómo lograr que una computadora reconozca que dos imágenes distintas representan el mismo objeto visto desde puntos de vista diferentes. En respuesta a la primera pregunta, Leone Battista Alberti (1404–1472) propuso el siguiente procedimiento: interponer una pantalla de vidrio entre uno mismo y el objeto, cerrar un ojo y marcar sobre el vidrio los puntos que parecen estar en la imagen. La imagen resultante, aunque bidimensional, dará una impresión fiel del objeto tridimensional.</p>
+</div>
+<figure class="art">
+  <img src="images/perspective.jpg" alt="Grabado en madera de Alberto Durero: un dibujante, mirando a través de un visor, marca sobre una pantalla de vidrio enmarcada el contorno de un hombre sentado." width="300" height="265" style="width:min(100%,420px)">
+  <figcaption>Este grabado en madera de Alberto Durero ilustra la idea de Alberti.</figcaption>
+</figure>
+<div class="prose">
+<p>El método de Alberti ha sido descrito como <em>proyección y sección</em>: primero trazamos el haz de rayos de luz que van del objeto al ojo y luego lo cortamos con la pantalla de vidrio. Como somos libres de mover el ojo y la posición de la pantalla, obtenemos muchas representaciones bidimensionales diferentes del objeto tridimensional. Un problema interesante, planteado por el mismo Alberti, es reconocer las propiedades comunes a todas estas representaciones. Es la misma pregunta que se hacen hoy los informáticos.</p>
+</div>
+<figure class="art">
+  <div class="pair">
+    <img src="images/giotto.jpg" alt="Giotto, La Epifanía: la escena de la Natividad bajo un cobertizo de madera cuyas líneas no convergen hacia un mismo punto de fuga." width="300" height="308">
+    <img src="images/raphael.jpg" alt="Rafael, La escuela de Atenas: filósofos en una sala abovedada dibujada en perspectiva central exacta." width="399" height="267">
+  </div>
+  <figcaption>Los intentos de perspectiva de Giotto en <i>La Epifanía</i> (izquierda) y <i>La escuela de Atenas</i> de Rafael (derecha). ¿Pueden ver qué falla en la perspectiva de Giotto?</figcaption>
+</figure>
+</section>
+
+<section id="infinity">
+<h2><span class="n">2</span>Puntos y rectas en el infinito</h2>
+<div class="prose">
+<p>El método de proyección y sección tiene la peculiaridad de que hay puntos en una representación que parecen no tener imagen en otra. Por ejemplo, en la siguiente figura plana, el punto <var>B</var> parece no tener imagen.</p>
+</div>
+<!--APPLET infinity|<b>El punto del infinito.</b> El punto <var>A</var> de la recta <var>l</var> se proyecta desde <var>P</var> sobre el punto <var>A′</var> de <var>m</var>. Arrastre <var>A</var> hacia <var>B</var>: su imagen se aleja a lo largo de <var>m</var>, y cuando <var>A</var> llega a <var>B</var> la recta de proyección es paralela a <var>m</var>.-->
+<div class="prose">
+<p>La manera clásica de resolver esta dificultad es decretar que la imagen de <var>B</var> es el punto del infinito de la recta <var>m</var>. Esta noción de puntos ideales puede hacerse rigurosa, pero lo dejaremos para lecciones futuras (véase el capítulo dos de las notas del curso). El mismo fenómeno ocurre en la siguiente figura, pero allí es toda una recta del plano de partida la que no tiene imagen en el plano de llegada. Se dice que la imagen de esta recta es la recta del infinito del plano de llegada.</p>
+</div>
+<figure class="svg"><img src="svg/infinity_line.svg" alt="Proyección desde un punto entre dos planos: la recta donde el plano de partida corta al plano que pasa por el ojo paralelo al plano de llegada no tiene imagen." width="320"><figcaption>Toda una recta del plano de partida es enviada al infinito.</figcaption></figure>
+<div class="prose">
+<p>La recta junto con su punto ideal en el infinito se llamará la <em>recta proyectiva</em>, y el plano junto con su recta ideal en el infinito se llamará el <em>plano proyectivo</em>.</p>
+<h3>Los invariantes</h3>
+<p>Siempre que tenemos una clase de transformaciones, en nuestro caso las que se obtienen por proyección y sección, es interesante estudiar qué propiedades conservan y cuáles no. Las propiedades que se conservan se llaman <em>invariantes</em>, y la mayor parte de las matemáticas y de la física consiste en su estudio.</p>
+<p>El problema planteado por Alberti es determinar los invariantes de la perspectiva. Es claro que no se conservan las distancias, ni los ángulos, ni las áreas. Las rectas paralelas no se transforman en rectas paralelas. Esta capacidad de deformar las imágenes parece hacer difícil el estudio de la perspectiva. Pero no todo se deforma: las rectas van a rectas, y si un punto está sobre una recta, entonces, desde cualquier otro punto de vista, el punto correspondiente estará sobre la recta correspondiente. Decimos que se conserva la <em>incidencia</em>. Esto puede parecer poco, pero basta para desarrollar una teoría matemática de gran poder y belleza.</p>
+<p>Los dos resultados clásicos que dependen únicamente de la noción de incidencia son los teoremas de Pappus y de Desargues. Antes de enunciarlos, fijemos algo de notación. La recta que une dos puntos <var>X</var> e <var>Y</var> se denota <var>XY</var>, mientras que el punto de intersección de las rectas <var>a</var> y <var>b</var> se denota <var>a</var>·<var>b</var>.</p>
+<div class="statement"><b>Teorema de Pappus.</b><p>Si <var>A</var>, <var>B</var>, <var>C</var> y <var>A′</var>, <var>B′</var>, <var>C′</var> son dos ternas de puntos alineados, entonces los puntos <var>AB′</var>·<var>BA′</var>, <var>AC′</var>·<var>CA′</var> y <var>BC′</var>·<var>CB′</var> están alineados.</p></div>
+</div>
+<!--APPLET pappus|<b>El teorema de Pappus.</b> Arrastre <var>A</var>, <var>B</var>, <var>A′</var>, <var>B′</var>, o deslice <var>C</var> y <var>C′</var> a lo largo de sus rectas. Los tres puntos del teorema siguen alineados.-->
+<div class="prose">
+<div class="statement"><b>Teorema de Desargues.</b><p>Si dos triángulos están en perspectiva, entonces sus lados correspondientes se cortan en tres puntos alineados.</p></div>
+</div>
+<!--APPLET desargues|<b>El teorema de Desargues.</b> El triángulo rojo y el triángulo verde están en perspectiva desde el punto <var>O</var>. Arrastre sus vértices o <var>O</var>: los tres puntos donde se cortan los lados correspondientes siguen alineados.-->
+</section>
+
+<section id="transformations">
+<h2><span class="n">3</span>Transformaciones proyectivas</h2>
+<div class="prose">
+<p>Para estudiar con más detalle los invariantes de la perspectiva, simplificamos la situación considerando una clase de transformaciones de la recta real en sí misma. Estas transformaciones pueden describirse así: pensemos la recta real dentro del plano, tracemos una segunda recta <var>m</var> y dos puntos <var>P</var> y <var>Q</var> como en la figura de abajo. Si <var>X</var> es un punto de la recta real, su imagen <var>T</var>(<var>X</var>) es la intersección de la recta real con la recta que pasa por el punto <var>Q</var> y por la intersección de <var>XP</var> y <var>m</var>. Si esta recta es paralela a la recta real, decimos que la imagen de <var>X</var> es el <em>punto del infinito</em>.</p>
+</div>
+<!--APPLET trans|<b>Una transformación proyectiva de la recta.</b> Deslice <var>X</var> a lo largo de la recta real y observe <var>T</var>(<var>X</var>). Mueva <var>P</var>, <var>Q</var>, o la recta oblicua <var>m</var> (por sus pequeños puntos extremos) para obtener otras transformaciones.-->
+<div class="prose">
+<p>Moviendo la recta <var>m</var> o los puntos <var>P</var> y <var>Q</var> obtenemos muchas transformaciones diferentes. Una versión de juguete del problema de Alberti es: <em>¿cuáles son los invariantes de este tipo de transformaciones?</em></p>
+<p>Una observación preliminar que parece casi trivial, pero que en realidad es muy importante, es que toda cantidad invariante bajo estas transformaciones es invariante bajo sus composiciones. Convengamos en llamar <em>transformaciones proyectivas</em> a todas las transformaciones que pueden obtenerse mediante la construcción anterior o componiendo tales transformaciones.</p>
+<p>Para ver cómo una transformación proyectiva puede mover las cosas, consideremos primero dos rectas con tres puntos en cada una. No es difícil ver que, combinando dos perspectivas, es posible transformar los tres puntos de la primera recta en los tres puntos de la segunda. La construcción está dada por la figura de abajo.</p>
+</div>
+<!--APPLET first|<b>Tres puntos en tres puntos.</b> Dos perspectivas, con centros en los puntos dorados, llevan los tres puntos rojos de una recta a los tres puntos verdes de la otra. Arrastre cualquiera de ellos.-->
+<div class="prose">
+<p>Aplicando dos veces esta construcción para volver a la recta original, vemos que una transformación proyectiva puede llevar tres puntos dados a tres puntos dados. De hecho, se tiene aún más:</p>
+<div class="statement"><b>Primer teorema fundamental.</b><p>Si <var>A</var>, <var>B</var>, <var>C</var> y <var>A′</var>, <var>B′</var>, <var>C′</var> son dos ternas de puntos distintos de una recta, existe una y solo una transformación proyectiva que lleva <var>A</var> a <var>A′</var>, <var>B</var> a <var>B′</var> y <var>C</var> a <var>C′</var>.</p></div>
+<p>El lado negativo de este resultado es que no puede haber ningún invariante de las transformaciones proyectivas que involucre solamente tres puntos. Intentemos ahora con cuatro puntos.</p>
+</div>
+</section>
+
+<section id="cross-ratio">
+<h2><span class="n">4</span>La razón doble</h2>
+<div class="prose">
+<p>Tomemos cuatro puntos <var>A</var>, <var>B</var>, <var>C</var> y <var>D</var> de la recta real extendida (se añade el infinito como punto ideal). Por el primer teorema fundamental, existe una y solo una transformación proyectiva <var>T</var> que lleva <var>A</var> al infinito, <var>B</var> a cero y <var>C</var> a uno. El número <var>T</var>(<var>D</var>) es la <em>razón doble</em> de los cuatro puntos. Habitualmente se denota [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>]. No es difícil ver que la razón doble de cuatro puntos es invariante bajo las transformaciones proyectivas. Es decir, si <var>A</var>, <var>B</var>, <var>C</var> y <var>D</var> son cuatro puntos y <var>S</var> es una transformación proyectiva, entonces [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>] = [<var>S</var>(<var>A</var>), <var>S</var>(<var>B</var>), <var>S</var>(<var>C</var>), <var>S</var>(<var>D</var>)].</p>
+<p>Razonamos así: si <var>T</var> es la única transformación proyectiva que lleva <var>A</var> al infinito, <var>B</var> a cero y <var>C</var> a uno, entonces [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>] = <var>T</var>(<var>D</var>). Por otra parte, si <var>R</var> es la única transformación proyectiva que lleva <var>S</var>(<var>A</var>) al infinito, <var>S</var>(<var>B</var>) a cero y <var>S</var>(<var>C</var>) a uno, entonces [<var>S</var>(<var>A</var>), <var>S</var>(<var>B</var>), <var>S</var>(<var>C</var>), <var>S</var>(<var>D</var>)] = <var>R</var>(<var>S</var>(<var>D</var>)). Como la composición <var>TS</var><sup>−1</sup> también lleva <var>S</var>(<var>A</var>) al infinito, <var>S</var>(<var>B</var>) a cero y <var>S</var>(<var>C</var>) a uno, tenemos que <var>TS</var><sup>−1</sup> = <var>R</var> y <var>R</var>(<var>S</var>(<var>D</var>)) = <var>T</var>(<var>D</var>).</p>
+<p>Por supuesto, sería útil saber calcular razones dobles. Resulta que la fórmula es bastante sencilla: si <var>x</var><sub>0</sub>, <var>x</var><sub>1</sub>, <var>x</var><sub>2</sub> y <var>x</var><sub>3</sub> son las coordenadas de cuatro puntos de la recta real extendida, entonces</p>
+<div class="formula">
+<!--FORMULA-->
+</div>
+<p>La razón doble es el análogo proyectivo de la distancia en la geometría euclidiana. Es el invariante que define la geometría:</p>
+<div class="statement"><b>Segundo teorema fundamental.</b><p>Si una transformación de la recta proyectiva en sí misma conserva las razones dobles, entonces es una transformación proyectiva.</p></div>
+<p>En el siglo diecinueve hubo una reacción contra la geometría analítica, y algunos geómetras consideraron que el segundo teorema fundamental, tal como está enunciado arriba, no era suficientemente geométrico. Para mejorarlo, usaron una construcción geométrica de las cuaternas de puntos cuya razón doble es igual a −1. Tales cuaternas se llaman <em>armónicas</em>. La construcción de abajo permite experimentar: observe, por ejemplo, qué ocurre cuando <var>C</var> es el punto medio del segmento <var>AB</var>.</p>
+</div>
+<!--APPLET harmonic|<b>El conjugado armónico.</b> El punto <var>D</var> se construye a partir de <var>A</var>, <var>B</var>, <var>C</var> usando solo rectas. Mueva el punto auxiliar situado sobre la recta, o las rectas punteadas que pasan por él: <var>D</var> no se mueve, porque [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>] = −1.-->
+<div class="prose">
+<div class="statement"><b>Teorema de von Staudt.</b><p>Si una transformación de la recta proyectiva en sí misma conserva las cuaternas armónicas, entonces es una transformación proyectiva.</p></div>
+</div>
+</section>
+
+<section id="duality">
+<h2><span class="n">5</span>Transformaciones proyectivas en dos dimensiones</h2>
+<div class="prose">
+<p>Consideremos ahora transformaciones del plano proyectivo (es decir, del plano junto con la recta del infinito) análogas a las que ya consideramos en la recta proyectiva. Las composiciones de estas transformaciones se llamarán transformaciones proyectivas (del plano proyectivo).</p>
+</div>
+<figure class="svg"><img src="svg/plane_trans.svg" alt="Dos planos que forman un ángulo; la recta que va de P por X corta la arista común, y la recta que va de ese punto por Q corta el segundo plano en T(X)." width="340"><figcaption>Una clase de transformaciones del plano proyectivo.</figcaption></figure>
+<div class="prose">
+<p>Como en el caso unidimensional, nos interesa saber cómo mueven los puntos las transformaciones proyectivas. Como estas transformaciones conservan las rectas, no podemos esperar llevar tres puntos dados a tres puntos dados: los tres primeros puntos podrían estar alineados y los otros no. Sin embargo, si decimos que cuatro puntos están en <em>posición general</em> cuando no hay tres de ellos sobre una misma recta, tenemos el siguiente resultado:</p>
+<div class="statement"><b>Primer teorema fundamental.</b><p>Si dos cuaternas de puntos <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var> y <var>A′</var>, <var>B′</var>, <var>C′</var>, <var>D′</var> están en posición general, existe una única transformación proyectiva del plano que lleva <var>A</var> a <var>A′</var>, <var>B</var> a <var>B′</var>, <var>C</var> a <var>C′</var> y <var>D</var> a <var>D′</var>.</p></div>
+<p>En dos dimensiones, es la propiedad de llevar rectas a rectas lo que caracteriza a las transformaciones proyectivas del plano.</p>
+<div class="statement"><b>Segundo teorema fundamental.</b><p>Si una biyección del plano proyectivo en sí mismo lleva rectas a rectas, entonces es una transformación proyectiva.</p></div>
+<h3>El principio de dualidad</h3>
+<p>Uno de los aspectos más interesantes de la geometría proyectiva en dimensiones mayores que uno es el principio de dualidad. Este principio afirma que los teoremas de la geometría proyectiva vienen en pares duales: basta intercambiar las palabras <em>recta</em> y <em>punto</em>, y cambiar la intersección de dos rectas por la recta determinada por dos puntos y viceversa. Por ejemplo, el dual del teorema de Desargues es su recíproco, y el dual del teorema de Pappus es el siguiente:</p>
+<div class="statement"><b>Dual del teorema de Pappus.</b><p>Si <var>a</var>, <var>b</var>, <var>c</var> y <var>a′</var>, <var>b′</var>, <var>c′</var> son dos ternas de rectas concurrentes, entonces las rectas (<var>a</var>·<var>b′</var>)(<var>a′</var>·<var>b</var>), (<var>a</var>·<var>c′</var>)(<var>c</var>·<var>a′</var>) y (<var>b</var>·<var>c′</var>)(<var>c</var>·<var>b′</var>) son concurrentes.</p></div>
+</div>
+<!--APPLET pappus_dual|<b>El dual del teorema de Pappus.</b> Dos haces de tres rectas, <var>a</var>, <var>b</var>, <var>c</var> y <var>a′</var>, <var>b′</var>, <var>c′</var>, emparejadas por color. Las tres rectas azules del teorema pasan siempre por un mismo punto.-->
+<div class="prose">
+<p>Este principio «mágico» no es en el fondo otra cosa que una interpretación geométrica de la dualidad de los espacios vectoriales.</p>
+</div>
+</section>
+
+<section id="conics">
+<h2><span class="n">6</span>Geometría proyectiva de las cónicas</h2>
+<div class="prose">
+<p>Una sección cónica es, por definición, la imagen de una circunferencia por una perspectividad cuyo centro es el vértice del cono. Moviendo e inclinando el plano, podemos obtener una elipse, una parábola y una hipérbola, pero también un punto, una recta y un par de rectas que se cortan. Estas últimas secciones cónicas se suelen llamar <em>degeneradas</em>. Como las cónicas no degeneradas son todas equivalentes a la circunferencia bajo transformaciones proyectivas (e incluso bajo perspectivas), podríamos pensar que la geometría proyectiva de las cónicas es más bien aburrida. Todo lo contrario: al olvidar las diferencias entre circunferencias, elipses, hipérbolas y parábolas, podemos concentrarnos en sus propiedades comunes y comprenderlas más a fondo.</p>
+</div>
+<figure class="svg"><img src="svg/conic_section.svg" alt="Un cono doble cortado por dos planos: una circunferencia y una elipse son imágenes una de la otra por perspectiva desde el vértice." width="300"><figcaption>Todas las cónicas no degeneradas son proyectivamente equivalentes.</figcaption></figure>
+<div class="prose">
+<p>Como consecuencia de la equivalencia proyectiva de las cónicas, todo resultado de naturaleza proyectiva que podamos demostrar para la circunferencia será válido para todas las cónicas. Un ejemplo sencillo de tal resultado es el siguiente:</p>
+<div class="statement"><b>Proposición.</b><p>Sean <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var> cuatro puntos de una cónica. Si <var>E</var> y <var>F</var> son dos puntos de la misma cónica distintos de los cuatro anteriores, las razones dobles [<var>EA</var>, <var>EB</var>, <var>EC</var>, <var>ED</var>] y [<var>FA</var>, <var>FB</var>, <var>FC</var>, <var>FD</var>] son iguales.</p></div>
+<p>Observemos que la razón doble de cuatro rectas que pasan por un punto <var>X</var> se define como la razón doble de los cuatro puntos que se obtienen cortando estas rectas con una recta cualquiera que no pase por <var>X</var>.</p>
+<p>La dualidad proyectiva no solo intercambia puntos y rectas: intercambia el conjunto de los puntos de una curva con el conjunto de las rectas tangentes a la curva. Si en la proposición anterior reemplazamos la cónica puntual por la cónica tangencial, obtenemos un nuevo resultado:</p>
+<div class="statement"><b>Proposición.</b><p>Sean <var>a</var>, <var>b</var>, <var>c</var>, <var>d</var> cuatro rectas tangentes a una cónica. Si <var>e</var> y <var>f</var> son dos rectas tangentes a la misma cónica distintas de las cuatro anteriores, entonces las razones dobles [<var>e</var>·<var>a</var>, <var>e</var>·<var>b</var>, <var>e</var>·<var>c</var>, <var>e</var>·<var>d</var>] y [<var>f</var>·<var>a</var>, <var>f</var>·<var>b</var>, <var>f</var>·<var>c</var>, <var>f</var>·<var>d</var>] son iguales.</p></div>
+</div>
+<figure class="svg row">
+  <div><img src="svg/conic_ratio.svg" alt="Seis puntos sobre una elipse; las cuatro rectas que unen E y F con A, B, C, D." width="320"><figcaption>[<var>EA</var>, <var>EB</var>, <var>EC</var>, <var>ED</var>] = [<var>FA</var>, <var>FB</var>, <var>FC</var>, <var>FD</var>].</figcaption></div>
+  <div><img src="svg/line_ratio.svg" alt="Una elipse con cuatro tangentes a, b, c, d cortadas por una quinta tangente e." width="300"><figcaption>La razón doble [<var>e</var>·<var>a</var>, <var>e</var>·<var>b</var>, <var>e</var>·<var>c</var>, <var>e</var>·<var>d</var>] no depende de la recta <var>e</var>.</figcaption></div>
+</figure>
+<div class="prose">
+<p>Los recíprocos de las proposiciones anteriores son los teoremas maestros del estudio proyectivo de las cónicas. Se deben a dos de los personajes más interesantes de la historia de las matemáticas: Jacob Steiner y Michel Chasles.</p>
+<div class="statement"><b>Teorema de Steiner.</b><p>Si <var>f</var> es una transformación proyectiva entre el haz de rectas que pasan por un punto <var>X</var> y el haz de rectas que pasan por un punto <var>Y</var>, entonces el lugar geométrico de los puntos {<var>m</var>·<var>f</var>(<var>m</var>) : la recta <var>m</var> pasa por <var>X</var>} es una cónica puntual.</p></div>
+<div class="statement"><b>Teorema de Chasles.</b><p>Si <var>f</var> es una transformación proyectiva entre el conjunto de los puntos de una recta <var>m</var> y el conjunto de los puntos de una recta <var>l</var>, entonces el conjunto de rectas {<var>X</var><var>f</var>(<var>X</var>) : el punto <var>X</var> está en <var>m</var>} es una cónica tangencial.</p></div>
+<p>No puedo resistir la tentación de mencionar un hermoso resultado de Chasles cuya demostración está fuera del alcance de este curso, pero cuyo enunciado es tan sencillo:</p>
+<div class="statement"><b>Teorema.</b><p>El número de cónicas tangentes a cinco cónicas dadas en posición general es 3264.</p></div>
+</div>
+</section>
+
+<section id="pascal">
+<h2><span class="n">7</span>Geometría proyectiva de las cónicas (continuación)</h2>
+<div class="prose">
+<p>Continuamos nuestro recorrido por la geometría proyectiva de las cónicas estableciendo algunas consecuencias sencillas de los teoremas maestros de Chasles y Steiner. La primera es que cinco puntos (o cinco rectas) en posición general determinan una cónica. Para verlo, llamemos a los puntos <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>, <var>E</var> y consideremos la transformación proyectiva <var>f</var> entre el haz de rectas que pasan por <var>A</var> y el haz de rectas que pasan por <var>B</var> que lleva <var>AC</var> a <var>BC</var>, <var>AD</var> a <var>BD</var> y <var>AE</var> a <var>BE</var>. Por el primer teorema fundamental, esta transformación existe y es única. Observemos que, por el teorema de Steiner, el lugar geométrico de los puntos {<var>m</var>·<var>f</var>(<var>m</var>) : la recta <var>m</var> pasa por <var>A</var>} es una cónica. Se verifica fácilmente que esta cónica pasa por los cinco puntos dados.</p>
+</div>
+<figure class="svg row">
+  <div><img src="svg/five_points.svg" alt="Cinco puntos A a E; las rectas que unen A y B con C, D, E." width="300"><figcaption>Cinco puntos en posición general determinan una cónica.</figcaption></div>
+  <!--APPLET-INLINE conic|<b>Pruébelo.</b> Arrastre cualquiera de los cinco puntos: la cónica que pasa por ellos los sigue.-->
+</figure>
+<div class="prose">
+<p>Otra consecuencia relativamente sencilla del teorema de Steiner es un teorema mucho más antiguo, debido a Pascal.</p>
+<div class="statement"><b>Teorema de Pascal.</b><p>Los seis vértices de un hexágono están sobre una cónica si y solo si los tres puntos que se obtienen al cortar los tres pares de lados opuestos están alineados.</p></div>
+</div>
+<!--APPLET pascal|<b>El teorema de Pascal.</b> Deslice <var>X</var> a lo largo de la recta <var>BC</var>. La recta azul que pasa por <var>X</var> y por <var>AB</var>·<var>DE</var> hace el papel de la recta de Pascal y produce el sexto vértice <var>F</var> del hexágono <var>ABCDEF</var>, que está siempre sobre la cónica que pasa por los otros cinco.-->
+<div class="prose">
+<p>El teorema de Pascal también puede usarse para construir una cónica de la que se conocen cinco puntos:</p>
+</div>
+<!--APPLET construct|<b>Dibujar una cónica con regla.</b> Deslice <var>X</var> a lo largo de la recta <var>BC</var>: el punto <var>F</var> deja una traza, y esa traza es la cónica que pasa por <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>, <var>E</var> (punteada).-->
+<div class="prose">
+<p>El dual del teorema de Pascal es el siguiente:</p>
+<div class="statement"><b>Teorema de Brianchon.</b><p>Los seis lados de un hexágono son tangentes a una cónica si y solo si las tres rectas que unen los tres pares de vértices opuestos son concurrentes.</p></div>
+</div>
+<figure class="svg"><img src="svg/brianchon.svg" alt="Un hexágono circunscrito a una elipse; sus tres diagonales principales se cortan en un punto." width="320"><figcaption>El teorema de Brianchon es el dual del de Pascal.</figcaption></figure>
+<div class="prose">
+<h3>Polo y polar</h3>
+<p>Una cónica convierte el principio de dualidad en una correspondencia concreta: todo punto <var>P</var> tiene una recta <em>polar</em>, y toda recta es la polar de un único punto, su <em>polo</em>. Cuando <var>P</var> está fuera de la cónica, su polar es la recta que pasa por los dos puntos donde las tangentes trazadas desde <var>P</var> tocan la cónica. Aplicando esta correspondencia a un hexágono inscrito en una cónica se obtiene un hexágono circunscrito, y el teorema de Pascal se convierte en el de Brianchon.</p>
+</div>
+<figure class="svg row">
+  <!--APPLET-INLINE polarity|<b>La polar de un punto.</b> Arrastre <var>P</var> dentro y fuera de la cónica, o deforme la cónica.-->
+  <!--APPLET-INLINE delahire|<b>El teorema de La Hire.</b> Cuando <var>P</var> se desliza a lo largo de la recta <var>ℓ</var>, su polar pasa siempre por <var>L</var>, el polo de <var>ℓ</var>.-->
+</figure>
+</section>
+
+<section id="conclusion">
+<h2>Conclusión</h2>
+<div class="prose">
+<p>Aquí termina nuestro rápido recorrido por algunos de los resultados clásicos de la geometría proyectiva. Volveremos sobre estos resultados a lo largo del curso, pero, sobre todo, veremos cómo se relacionan con otros dominios de las matemáticas, como el álgebra lineal, la teoría de grupos, el estudio de las formas cuadráticas, el análisis complejo, la geometría hiperbólica y la topología.</p>
+<h3>Agradecimientos</h3>
+<p><em>La versión original (2001).</em> Este curso interactivo de geometría proyectiva fue desarrollado originalmente cuando yo estaba en el Département de Mathématiques de la Université Catholique de Louvain, en Louvain-la-Neuve, Bélgica. Para prepararlo, hice un uso extenso de una gran cantidad de programas que, en su mayoría, están disponibles libremente en internet. De hecho, fue la disponibilidad de estos programas lo que me impulsó a emprender este experimento. Agradezco calurosamente a los desarrolladores de Emacs, Linux, TeX, LaTeX, LaTeX2HTML, GIMP, Perl, HTML, XFig y Cinderella (el único de estos programas que no es libre) por las maravillosas herramientas que han creado.</p>
+<p><em>Esta edición (2026).</em> Las applets de Java de la versión original ya no funcionan en los navegadores actuales. Las construcciones volvieron a la vida gracias a CindyJS, el sucesor libre de Cinderella, mediante la traducción de los archivos originales de Cinderella; las figuras se redibujaron en MetaPost a partir de las fuentes originales de XFig; y la página misma es HTML simple. La conversión se realizó con la ayuda de Claude, un asistente de inteligencia artificial creado por Anthropic. Agradezco a los desarrolladores de CindyJS, MetaPost, LuaTeX y Python.</p>
+<p>Espero que otros geómetras se sientan también tentados a experimentar con estas herramientas y hagan su trabajo libremente accesible en internet.</p>
+<h3>Referencias</h3>
+<p>Al preparar esta lección, los siguientes textos me resultaron muy útiles:</p>
+<!--REFS-->
+</div>
+<p class="note">Esta lección se publicó en la web por primera vez en 2001, con applets de Java hechas en Cinderella. En esta edición las construcciones funcionan en cualquier navegador: fueron traducidas a <a href="https://cindyjs.org">CindyJS</a> directamente a partir de los archivos originales de Cinderella, y las figuras se redibujaron en MetaPost a partir de las fuentes originales de XFig. En cada construcción, los <span class="dot drag"></span> puntos de color pueden arrastrarse y el <span class="dot res"></span> azul indica lo que predice el teorema.</p>
+</section>
+</main>
+<footer class="license"><p>© 2001, 2026 Juan Carlos Álvarez Paiva. El texto y las figuras se distribuyen bajo la licencia <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">Creative Commons Atribución-CompartirIgual 4.0 Internacional</a> (CC BY-SA 4.0): puede copiarlos, adaptarlos y compartirlos, siempre que cite al autor y distribuya cualquier adaptación bajo la misma licencia. Los scripts de compilación se distribuyen bajo la licencia <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU GPL v3</a> o posterior. CindyJS se distribuye bajo la licencia Apache 2.0. Las reproducciones de obras de Durero, Giotto y Rafael son de dominio público.</p></footer>

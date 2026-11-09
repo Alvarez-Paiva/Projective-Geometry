@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introduction to Projective Geometry</title>
+<link rel="canonical" href="https://alvarez-paiva.github.io/Projective-Geometry/inaugural-lecture/">
+<link rel="alternate" hreflang="en" href="https://alvarez-paiva.github.io/Projective-Geometry/inaugural-lecture/">
+<link rel="alternate" hreflang="fr" href="https://alvarez-paiva.github.io/Projective-Geometry/inaugural-lecture/index-fr.html">
+<link rel="alternate" hreflang="es" href="https://alvarez-paiva.github.io/Projective-Geometry/inaugural-lecture/index-es.html">
+<link rel="alternate" hreflang="x-default" href="https://alvarez-paiva.github.io/Projective-Geometry/inaugural-lecture/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alvarez-paiva.github.io/Projective-Geometry/inaugural-lecture/">
+<meta property="og:title" content="Introduction to Projective Geometry">
+<meta property="og:description" content="Inaugural lecture of an interactive course on projective geometry, with live constructions.">
+<meta property="og:image" content="https://alvarez-paiva.github.io/Projective-Geometry/inaugural-lecture/images/raphael.jpg">
+<meta property="og:locale" content="en_GB">
+<meta name="description" content="Inaugural lecture of an interactive course on projective geometry, with live constructions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one reading column, figures and live constructions wider than the text,
+   section numbers taken from the seven pages of the 2001 lecture. Single light theme. */
+:root {
+  --paper: #f6f7f9;
+  --board: #ffffff;
+  --ink: #20242b;
+  --muted: #5d6570;
+  --rule: #d8dce2;
+  --lapis: #264a94;      /* Giotto's ultramarine: constructed results */
+  --vermilion: #c7402a;  /* draggable points */
+  --display: "EB Garamond", Garamond, "Times New Roman", serif;
+  --body: "Source Serif 4", Georgia, serif;
+  --ui: "Source Sans 3", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.62 var(--body); }
+a { color: var(--lapis); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--lapis); outline-offset: 2px; }
+header.top { max-width: 940px; margin: 0 auto; padding: 48px 20px 12px; display: grid; gap: 6px; }
+.kicker { font: 600 0.8rem/1.2 var(--ui); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 500 clamp(2.2rem, 5vw, 3.3rem)/1.05 var(--display); margin: 0; text-wrap: balance; }
+.byline { font: 1.05rem var(--display); font-style: italic; }
+.affil { font: 0.92rem/1.4 var(--ui); color: var(--muted); }
+nav.toc { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(6px); border-bottom: 1px solid var(--rule); }
+nav.toc ol { max-width: 940px; margin: 0 auto; padding: 8px 20px; list-style: none; display: flex; gap: 4px 18px; flex-wrap: wrap;
+  font: 0.86rem var(--ui); }
+nav.toc a { color: var(--muted); text-decoration: none; }
+nav.toc a:hover { color: var(--ink); }
+nav.toc b { color: var(--lapis); font-weight: 600; margin-right: 4px; }
+main { max-width: 940px; margin: 0 auto; padding: 8px 20px 64px; }
+section { padding-top: 28px; }
+.prose { max-width: 66ch; }
+.prose p { margin: 0 0 1em; }
+h2 { font: 500 1.9rem/1.15 var(--display); margin: 1.4em 0 0.5em; text-wrap: balance; }
+h2 .n { color: var(--lapis); margin-right: 0.35em; font-variant-numeric: oldstyle-nums; }
+h3 { font: 600 1.25rem/1.25 var(--display); margin: 1.2em 0 0.3em; }
+.statement { border-left: 3px solid var(--lapis); padding: 2px 0 2px 16px; margin: 1em 0 1.2em; }
+.statement b { font: 600 1rem var(--display); font-size: 1.12rem; }
+.statement p { margin: 0.2em 0 0; font-style: italic; }
+var, .m { font-style: italic; font-family: var(--body); }
+figure { margin: 1.4em 0 1.8em; }
+figure.art { display: grid; gap: 14px; }
+figure.art .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; align-items: end; }
+figure img { max-width: 100%; height: auto; display: block; border-radius: 3px; }
+figure.svg img { margin: 0 auto; width: min(100%, 400px); height: auto; max-height: 320px; object-fit: contain; }
+figure.svg.row { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; align-items: center; }
+figcaption { font: 0.92rem/1.45 var(--ui); color: var(--muted); margin-top: 8px; max-width: 70ch; }
+figcaption b { color: var(--ink); font-weight: 600; }
+.applet .board { position: relative; background: var(--board); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden;
+  touch-action: none; }
+.applet .board > div { position: absolute; inset: 0; }
+.applet .bar { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; flex-wrap: wrap; }
+.applet button { font: 600 0.82rem var(--ui); color: var(--ink); background: var(--board); border: 1px solid var(--rule);
+  border-radius: 4px; padding: 4px 10px; cursor: pointer; }
+.applet button:hover { border-color: var(--lapis); color: var(--lapis); }
+.dot { display: inline-block; width: 0.62em; height: 0.62em; border-radius: 50%; vertical-align: 0.05em; }
+.dot.drag { background: var(--vermilion); } .dot.res { background: var(--lapis); }
+math { font-size: 1.08em; }
+.formula { text-align: center; margin: 1em 0 1.2em; font-size: 1.15rem; }
+footer.license { max-width: 940px; margin: 48px auto 0; padding: 18px 20px 40px; border-top: 1px solid var(--rule); font: 0.8rem/1.5 var(--ui); color: var(--muted); }
+footer.license p { max-width: 80ch; margin: 0; }
+footer.license a { color: inherit; }
+.note { font: 0.9rem/1.5 var(--ui); color: var(--muted); border-top: 1px solid var(--rule); margin-top: 40px; padding-top: 14px; max-width: 70ch; }
+ol.refs { padding-left: 1.2em; } ol.refs li { margin-bottom: 0.4em; }
+@media (max-width: 600px) { body { font-size: 17px; } header.top { padding-top: 28px; } }
+
+.langs { display: flex; gap: 14px; justify-content: flex-end; flex-wrap: wrap; font: 0.82rem/1 var(--ui); margin-bottom: 8px; }
+.langs a, .langs span { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); text-decoration: none; }
+.langs a:hover { color: var(--ink, #222); text-decoration: underline; }
+.langs span[aria-current] { color: var(--ink, #222); font-weight: 600; }
+.langs a.home { margin-right: auto; }
+.langs svg { width: 21px; height: 14px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.15); }
+</style>
+</head>
+<body>
+<header class="top">
+  <nav class="langs" aria-label="Language"><a class="home" href="../">← Projective geometry course</a><span lang="en" aria-current="page"><svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M0,0v30h60V0z"/></clipPath><clipPath id="ukt"><path d="M30,15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#ukc)"><path d="M0,0v30h60V0z" fill="#012169"/><path d="M0,0L60,30M60,0L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0L60,30M60,0L0,30" clip-path="url(#ukt)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></g></svg>English</span><a href="index-fr.html" lang="fr" hreflang="fr"><svg viewBox="0 0 3 2" aria-hidden="true"><path fill="#002654" d="M0 0h1v2H0z"/><path fill="#fff" d="M1 0h1v2H1z"/><path fill="#CE1126" d="M2 0h1v2H2z"/></svg>Français</a><a href="index-es.html" lang="es" hreflang="es"><svg viewBox="0 0 3 2" aria-hidden="true"><path fill="#AA151B" d="M0 0h3v2H0z"/><path fill="#F1BF00" d="M0 .5h3v1H0z"/></svg>Español</a></nav>
+  <div class="kicker">Interactive course on projective geometry · Inaugural lecture</div>
+  <h1>Introduction to Projective Geometry</h1>
+  <div class="byline">Juan Carlos Álvarez Paiva</div>
+  <div class="affil">Laboratoire Paul Painlevé, Université de Lille, France</div>
+</header>
+<nav class="toc" aria-label="Contents">
+  <ol>
+    <li><a href="#perspective"><b>1</b>Perspective</a></li>
+    <li><a href="#infinity"><b>2</b>Infinity and invariants</a></li>
+    <li><a href="#transformations"><b>3</b>Projective transformations</a></li>
+    <li><a href="#cross-ratio"><b>4</b>Cross ratios</a></li>
+    <li><a href="#duality"><b>5</b>The plane and duality</a></li>
+    <li><a href="#conics"><b>6</b>Conics</a></li>
+    <li><a href="#pascal"><b>7</b>Pascal and Brianchon</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+<main>
+
+<section id="perspective">
+<div class="prose">
+<p>Thirty years ago the study of projective geometry would have seemed somewhat like the study of Latin: good for the brain and a means to keep in contact with the ancients. Today, however, projective geometry is a popular subject with mathematicians and computer scientists. This is due to the new applications to computer vision and to the fact that geometry and geometric thinking are again on the upswing. Moreover, computer science has returned the favor by providing powerful tools for the visualization and diffusion of mathematics. Interactive figures, animations, and linked web pages allow us to present mathematics and, most particularly, geometry in a way that was unthinkable thirty years ago.</p>
+<p>In this course, we shall study projective geometry from a modern perspective using modern tools. A lot of effort will be spent in studying general unifying ideas in geometry such as group actions, homogeneous spaces, invariants, duality, compactification, complexification, and metric spaces. It will be an advantage to the student of geometry to be armed with these ideas before he or she tackles other more complex ideas such as connections, fiber bundles, spinors, and twistors. On the other hand these abstract concepts will be illustrated by geometric constructions of great simplicity. These constructions become alive through their presentation as interactive figures. Moreover, as these constructions, and indeed the whole course, are available through the internet, the student can make better use of the allotted class time to ask questions, solve problems, and expand his or her horizons.</p>
+<p>We now turn to a short description of the subject matter of this course. Today we will deal only with the most elementary and visual ideas, but I think it will be enough to give you an idea of what lies beyond.</p>
+</div>
+<h2><span class="n">1</span>Perspective</h2>
+<div class="prose">
+<p>The architects and painters of the Renaissance asked themselves how to represent a three-dimensional object on a two-dimensional surface. Computer scientists today ask how to make a computer recognize that two distinct images represent the same object from different points of view. In answer to the first question, Leone Battista Alberti (1404–1472) proposed the following procedure: interpose a glass screen between yourself and the object, close one eye, and mark on the glass the points that appear to be on the image. The resulting image, although two-dimensional, will give a faithful impression of the three-dimensional object.</p>
+</div>
+<figure class="art">
+  <img src="images/perspective.jpg" alt="Woodcut by Albrecht Dürer: a draughtsman, looking through a sighting device, marks on a framed glass screen the outline of a seated man." width="300" height="265" style="width:min(100%,420px)">
+  <figcaption>This woodcut by Albrecht Dürer illustrates Alberti’s idea.</figcaption>
+</figure>
+<div class="prose">
+<p>Alberti’s method has been described as <em>projection and section</em>: first we draw the sheaf of light rays entering the eye from the object and then we cut with the glass screen. Since we are free to move our eye and the position of the screen, we have many different two-dimensional representations of the three-dimensional object. An interesting problem, raised by Alberti himself, is to recognize the common properties of all these different representations. This question is the same computer scientists ask today.</p>
+</div>
+<figure class="art">
+  <div class="pair">
+    <img src="images/giotto.jpg" alt="Giotto, The Epiphany: the Nativity scene under a wooden shelter whose lines do not converge to a common vanishing point." width="300" height="308">
+    <img src="images/raphael.jpg" alt="Raphael, The School of Athens: philosophers in a vaulted hall drawn in exact central perspective." width="399" height="267">
+  </div>
+  <figcaption>Giotto’s attempts at perspective in <i>The Epiphany</i> (left) and Raphael’s <i>The School of Athens</i> (right). Can you see what’s wrong with Giotto’s perspective?</figcaption>
+</figure>
+</section>
+
+<section id="infinity">
+<h2><span class="n">2</span>Points and lines at infinity</h2>
+<div class="prose">
+<p>The method of projection and section is peculiar in that there are points on one representation that seem to have no image in another. For example, in the following two-dimensional picture, the point <var>B</var> seems to have no image.</p>
+</div>
+<figure class="applet" data-applet="infinity"><div class="board" style="aspect-ratio:2.0270"><div id="cs-infinity"></div></div><div class="bar"><figcaption><b>The point at infinity.</b> The point <var>A</var> on the line <var>l</var> is projected from <var>P</var> to the point <var>A′</var> on <var>m</var>. Drag <var>A</var> towards <var>B</var>: its image runs off along <var>m</var>, and when <var>A</var> reaches <var>B</var> the projecting line is parallel to <var>m</var>.</figcaption><button type="button" data-reset="infinity">Reset</button></div></figure>
+<div class="prose">
+<p>The classical way of dealing with this difficulty is to decree the image of <var>B</var> to be the point at infinity on the line <var>m</var>. This notion of ideal points can be made rigorous, but we will leave that for future lectures (see chapter two of the course notes). The same phenomenon occurs in the following figure, but there a whole line of points on the source plane has no image on the target plane. The image of this line is said to be the line at infinity on the target plane.</p>
+</div>
+<figure class="svg"><img src="svg/infinity_line.svg" alt="Projection from a point between two planes: the line where the source plane meets the plane through the eye parallel to the target plane has no image." width="320"><figcaption>A whole line of the source plane is sent to infinity.</figcaption></figure>
+<div class="prose">
+<p>The line together with its ideal point at infinity will be termed the <em>projective line</em>, and the plane with its ideal line at infinity will be termed the <em>projective plane</em>.</p>
+<h3>Invariants</h3>
+<p>Whenever we have a class of transformations, in our case those obtained through projection and section, it is interesting to study what properties are or are not preserved by them. The properties that are preserved are called <em>invariants</em> and most of mathematics and physics consists in their study.</p>
+<p>The problem posed by Alberti is to determine the invariants of perspective. It is clear that distances are not preserved, nor angles, nor areas. Parallel lines are not taken to parallel lines. This capacity for distorting images seems to make perspective hard to study. But not all is distorted: lines go to lines and if a point lies on a line, then in any other point of view the corresponding point will lie on the corresponding line. We say that <em>incidence</em> is preserved. This may not seem like much, but it is enough to develop a mathematical theory of great power and beauty.</p>
+<p>The two classical results depending solely on the notion of incidence are the theorems of Pappus and Desargues. Before stating them, let us fix some notation. The line joining two points <var>X</var> and <var>Y</var> is denoted by <var>XY</var> while the point of intersection of the lines <var>a</var> and <var>b</var> is denoted by <var>a</var>·<var>b</var>.</p>
+<div class="statement"><b>Pappus’ theorem.</b><p>If <var>A</var>, <var>B</var>, <var>C</var> and <var>A′</var>, <var>B′</var>, <var>C′</var> are two triples of collinear points, then the points <var>AB′</var>·<var>BA′</var>, <var>AC′</var>·<var>CA′</var>, and <var>BC′</var>·<var>CB′</var> are collinear.</p></div>
+</div>
+<figure class="applet" data-applet="pappus"><div class="board" style="aspect-ratio:2.1147"><div id="cs-pappus"></div></div><div class="bar"><figcaption><b>Pappus’ theorem.</b> Drag <var>A</var>, <var>B</var>, <var>A′</var>, <var>B′</var>, or slide <var>C</var> and <var>C′</var> along their lines. The three points of the theorem stay on a line.</figcaption><button type="button" data-reset="pappus">Reset</button></div></figure>
+<div class="prose">
+<div class="statement"><b>Desargues’ theorem.</b><p>If two triangles are in perspective, then their corresponding sides intersect in three collinear points.</p></div>
+</div>
+<figure class="applet" data-applet="desargues"><div class="board" style="aspect-ratio:2.1147"><div id="cs-desargues"></div></div><div class="bar"><figcaption><b>Desargues’ theorem.</b> The red and the green triangles are in perspective from the point <var>O</var>. Drag their vertices or <var>O</var>: the three points where corresponding sides meet stay on a line.</figcaption><button type="button" data-reset="desargues">Reset</button></div></figure>
+</section>
+
+<section id="transformations">
+<h2><span class="n">3</span>Projective transformations</h2>
+<div class="prose">
+<p>In order to study the invariants of perspective in more detail, we simplify the situation by considering a class of transformations from the real line onto itself. These transformations can be described as follows: think of the real line inside the plane, draw a second line <var>m</var> and two points <var>P</var> and <var>Q</var> as in the figure below. If <var>X</var> is a point on the real line, its image <var>T</var>(<var>X</var>) is given by the intersection of the real line with the line passing through the point <var>Q</var> and the intersection of <var>XP</var> and <var>m</var>. If this line is parallel to the real line we say that the image of <var>X</var> is the <em>point at infinity</em>.</p>
+</div>
+<figure class="applet" data-applet="trans"><div class="board" style="aspect-ratio:2.2637"><div id="cs-trans"></div></div><div class="bar"><figcaption><b>A projective transformation of the line.</b> Slide <var>X</var> along the real line and watch <var>T</var>(<var>X</var>). Move <var>P</var>, <var>Q</var>, or the slanted line <var>m</var> (by its small end points) to obtain other transformations.</figcaption><button type="button" data-reset="trans">Reset</button></div></figure>
+<div class="prose">
+<p>By moving the line <var>m</var> or the points <var>P</var> and <var>Q</var> we obtain many different transformations. A toy version of Alberti’s problem is: <em>what are the invariants of this type of transformations?</em></p>
+<p>A preliminary remark that seems almost trivial, but is actually very important, is that any quantity that is invariant under these transformations is invariant under their composition. Let us agree to call all possible transformations that can be obtained by the construction above or by composition of such transformations <em>projective transformations</em>.</p>
+<p>To see how a projective transformation may move things around, we first consider two lines with three points on each. It is not hard to see that by combining two perspectives it is possible to transform the three points on the first line to the three points on the second line. The construction is given by the figure below.</p>
+</div>
+<figure class="applet" data-applet="first"><div class="board" style="aspect-ratio:2.1727"><div id="cs-first"></div></div><div class="bar"><figcaption><b>Three points to three points.</b> Two perspectives, centered at the gold points, take the three red points on one line to the three blue points on the other. Drag any of them.</figcaption><button type="button" data-reset="first">Reset</button></div></figure>
+<div class="prose">
+<p>Applying this construction twice to come back to the original line, we see that a projective transformation can take three prescribed points to three prescribed points. In fact, even more is true:</p>
+<div class="statement"><b>First fundamental theorem.</b><p>If <var>A</var>, <var>B</var>, <var>C</var> and <var>A′</var>, <var>B′</var>, <var>C′</var> are two triples of distinct points lying on a line, there is one and only one projective transformation that sends <var>A</var> to <var>A′</var>, <var>B</var> to <var>B′</var>, and <var>C</var> to <var>C′</var>.</p></div>
+<p>The downside of this result is that there can be no invariant of projective transformations involving just three points. Let us now try with four points.</p>
+</div>
+</section>
+
+<section id="cross-ratio">
+<h2><span class="n">4</span>Cross ratios</h2>
+<div class="prose">
+<p>Take four points <var>A</var>, <var>B</var>, <var>C</var> and <var>D</var> on the extended real line (infinity is added as an ideal point). By the first fundamental theorem, there exists one and only one projective transformation <var>T</var> that sends <var>A</var> to infinity, <var>B</var> to zero, and <var>C</var> to one. The number <var>T</var>(<var>D</var>) is the <em>cross ratio</em> of the four points. It is usually denoted by [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>]. It is not hard to see that the cross ratio of four points is invariant under projective transformations. That is to say, that if <var>A</var>, <var>B</var>, <var>C</var> and <var>D</var> are four points and <var>S</var> is a projective transformation, then [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>] = [<var>S</var>(<var>A</var>), <var>S</var>(<var>B</var>), <var>S</var>(<var>C</var>), <var>S</var>(<var>D</var>)].</p>
+<p>We reason thus: if <var>T</var> is the one and only projective transformation that sends <var>A</var> to infinity, <var>B</var> to zero, and <var>C</var> to one, [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>] = <var>T</var>(<var>D</var>). On the other hand if <var>R</var> is the one and only projective transformation that sends <var>S</var>(<var>A</var>) to infinity, <var>S</var>(<var>B</var>) to zero, and <var>S</var>(<var>C</var>) to one, [<var>S</var>(<var>A</var>), <var>S</var>(<var>B</var>), <var>S</var>(<var>C</var>), <var>S</var>(<var>D</var>)] = <var>R</var>(<var>S</var>(<var>D</var>)). Since the composition <var>TS</var><sup>−1</sup> also sends <var>S</var>(<var>A</var>) to infinity, <var>S</var>(<var>B</var>) to zero, and <var>S</var>(<var>C</var>) to one, we have that <var>TS</var><sup>−1</sup> = <var>R</var> and <var>R</var>(<var>S</var>(<var>D</var>)) = <var>T</var>(<var>D</var>).</p>
+<p>Of course, it would be useful to compute cross ratios. It turns out that the formula is quite simple: if <var>x</var><sub>0</sub>, <var>x</var><sub>1</sub>, <var>x</var><sub>2</sub>, and <var>x</var><sub>3</sub> are the coordinates of four points on the extended real line, then</p>
+<div class="formula">
+<math display="block"><mrow><mo>[</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>x</mi><mn>3</mn></msub><mo>]</mo><mo>:=</mo><mfrac><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac><mspace width="0.3em"/><mfrac><mrow><msub><mi>x</mi><mn>3</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><mrow><msub><mi>x</mi><mn>3</mn></msub><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub></mrow></mfrac><mo>.</mo></mrow></math>
+</div>
+<p>Cross ratio is the projective analogue of distance in Euclidean geometry. It is the invariant that defines the geometry:</p>
+<div class="statement"><b>Second fundamental theorem.</b><p>If a transformation from the projective line to itself preserves cross ratios, then it is a projective transformation.</p></div>
+<p>In the nineteenth century there was a backlash against analytic geometry and some geometers decided that the second fundamental theorem as stated above was not geometric enough. To improve it, they made use of a geometric construction for quadruples of points with cross ratio equal to −1. Such quadruples are called <em>harmonic</em>. The construction below lets you experiment: for example, note what happens when <var>C</var> is the midpoint of the segment <var>AB</var>.</p>
+</div>
+<figure class="applet" data-applet="harmonic"><div class="board" style="aspect-ratio:2.4780"><div id="cs-harmonic"></div></div><div class="bar"><figcaption><b>The harmonic conjugate.</b> The point <var>D</var> is constructed from <var>A</var>, <var>B</var>, <var>C</var> with lines alone. Move the auxiliary point above the line, or the dashed lines through it: <var>D</var> does not move, because [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>] = −1.</figcaption><button type="button" data-reset="harmonic">Reset</button></div></figure>
+<div class="prose">
+<div class="statement"><b>Von Staudt’s theorem.</b><p>If a transformation from the projective line to itself preserves harmonic quadruples, then it is a projective transformation.</p></div>
+</div>
+</section>
+
+<section id="duality">
+<h2><span class="n">5</span>Projective transformations in two dimensions</h2>
+<div class="prose">
+<p>We now consider transformations of the projective plane (i.e., the plane plus the line at infinity) that are analogous to those we already considered on the projective line. Compositions of these transformations will be called projective transformations (of the projective plane).</p>
+</div>
+<figure class="svg"><img src="svg/plane_trans.svg" alt="Two planes at an angle; the line from P through X meets the hinge, and the line from there through Q meets the second plane at T(X)." width="340"><figcaption>A class of transformations on the projective plane.</figcaption></figure>
+<div class="prose">
+<p>Like in the one-dimensional case, we are interested in knowing how projective transformations move points around. Since these transformations preserve lines, we cannot expect that three prescribed points be taken to three prescribed points: the first three points may be collinear and the others not. However, if we say that four points are in <em>general position</em> when no three of them lie on the same line, we have the following result:</p>
+<div class="statement"><b>First fundamental theorem.</b><p>If two quadruples of points <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var> and <var>A′</var>, <var>B′</var>, <var>C′</var>, <var>D′</var> are in general position, there exists a unique projective transformation of the plane that takes <var>A</var> to <var>A′</var>, <var>B</var> to <var>B′</var>, <var>C</var> to <var>C′</var>, and <var>D</var> to <var>D′</var>.</p></div>
+<p>In two dimensions it is the property of taking lines to lines that characterizes projective transformations of the plane.</p>
+<div class="statement"><b>Second fundamental theorem.</b><p>If a bijection from the projective plane to itself sends lines to lines, then it is a projective transformation.</p></div>
+<h3>The principle of duality</h3>
+<p>One of the most interesting aspects of projective geometry in dimensions higher than one is the principle of duality. This principle asserts that theorems in projective geometry come in dual pairs: it suffices to interchange the words <em>line</em> and <em>point</em> and to change the intersection of two lines for the line determined by two points and vice versa. For example, the dual of Desargues’ theorem is its converse and the dual of Pappus’ theorem is as follows:</p>
+<div class="statement"><b>Dual of Pappus’ theorem.</b><p>If <var>a</var>, <var>b</var>, <var>c</var> and <var>a′</var>, <var>b′</var>, <var>c′</var> are two triples of concurrent lines, then the lines (<var>a</var>·<var>b′</var>)(<var>a′</var>·<var>b</var>), (<var>a</var>·<var>c′</var>)(<var>c</var>·<var>a′</var>), and (<var>b</var>·<var>c′</var>)(<var>c</var>·<var>b′</var>) are concurrent.</p></div>
+</div>
+<figure class="applet" data-applet="pappus_dual"><div class="board" style="aspect-ratio:2.1147"><div id="cs-pappus_dual"></div></div><div class="bar"><figcaption><b>The dual of Pappus’ theorem.</b> Two pencils of three lines, <var>a</var>, <var>b</var>, <var>c</var> and <var>a′</var>, <var>b′</var>, <var>c′</var>, matched by color. The three blue lines of the theorem always pass through one point.</figcaption><button type="button" data-reset="pappus_dual">Reset</button></div></figure>
+<div class="prose">
+<p>This “magic” principle is at heart nothing else than a geometric interpretation of the duality of vector spaces.</p>
+</div>
+</section>
+
+<section id="conics">
+<h2><span class="n">6</span>Projective geometry of conics</h2>
+<div class="prose">
+<p>A conic section is, by definition, the image of a circle under a perspectivity whose center is the vertex of the cone. By moving and tilting the plane, we may obtain an ellipse, a parabola, and a hyperbola, but also a point, a line, and a pair of intersecting lines. These last conic sections are usually termed <em>degenerate</em>. Since the nondegenerate conics are all equivalent to the circle under projective (and even perspective) transformations, we may think that the projective geometry of conics is rather dull. Far from that, by forgetting the differences between circles, ellipses, hyperbolas, and parabolas, we are able to concentrate on their common properties and gain a deeper understanding of them.</p>
+</div>
+<figure class="svg"><img src="svg/conic_section.svg" alt="A double cone cut by two planes: a circle and an ellipse are perspective images of each other from the vertex." width="300"><figcaption>All nondegenerate conics are projectively equivalent.</figcaption></figure>
+<div class="prose">
+<p>As a consequence of the projective equivalence of conics, any result of a projective nature that we can prove for the circle will hold for all conics. An easy example of such a result is the following</p>
+<div class="statement"><b>Proposition.</b><p>Let <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var> be four points on a conic. If <var>E</var> and <var>F</var> are two points on the same conic that are different from the previous four points, the cross ratios [<var>EA</var>, <var>EB</var>, <var>EC</var>, <var>ED</var>] and [<var>FA</var>, <var>FB</var>, <var>FC</var>, <var>FD</var>] are equal.</p></div>
+<p>We remark that the cross ratio of four lines passing through a point <var>X</var> is defined as the cross ratio of the four points obtained by intersecting these lines with an arbitrary line not passing through <var>X</var>.</p>
+<p>Projective duality not only interchanges points and lines, it interchanges the set of points lying on a curve for the set of lines tangent to the curve. If we replace the point conic for the line conic in the previous proposition, we obtain a new result:</p>
+<div class="statement"><b>Proposition.</b><p>Let <var>a</var>, <var>b</var>, <var>c</var>, <var>d</var> be four lines tangent to a conic. If <var>e</var> and <var>f</var> are two lines tangent to the same conic that are different from the previous four lines, then the cross ratios [<var>e</var>·<var>a</var>, <var>e</var>·<var>b</var>, <var>e</var>·<var>c</var>, <var>e</var>·<var>d</var>] and [<var>f</var>·<var>a</var>, <var>f</var>·<var>b</var>, <var>f</var>·<var>c</var>, <var>f</var>·<var>d</var>] are equal.</p></div>
+</div>
+<figure class="svg row">
+  <div><img src="svg/conic_ratio.svg" alt="Six points on an ellipse; the four lines from E and from F to A, B, C, D." width="320"><figcaption>[<var>EA</var>, <var>EB</var>, <var>EC</var>, <var>ED</var>] = [<var>FA</var>, <var>FB</var>, <var>FC</var>, <var>FD</var>].</figcaption></div>
+  <div><img src="svg/line_ratio.svg" alt="An ellipse with four tangent lines a, b, c, d cut by a fifth tangent e." width="300"><figcaption>The cross ratio [<var>e</var>·<var>a</var>, <var>e</var>·<var>b</var>, <var>e</var>·<var>c</var>, <var>e</var>·<var>d</var>] is independent of the line <var>e</var>.</figcaption></div>
+</figure>
+<div class="prose">
+<p>The converses of the previous propositions are the master theorems in the projective study of conics. They are due to two of the most interesting characters in the history of mathematics: Jacob Steiner and Michel Chasles.</p>
+<div class="statement"><b>Steiner’s theorem.</b><p>If <var>f</var> is a projective transformation between the pencil of lines passing through a point <var>X</var> and the pencil of lines passing through a point <var>Y</var>, then the locus of points {<var>m</var>·<var>f</var>(<var>m</var>) : the line <var>m</var> passes through <var>X</var>} is a point conic.</p></div>
+<div class="statement"><b>Chasles’ theorem.</b><p>If <var>f</var> is a projective transformation between the set of points lying on a line <var>m</var> and the set of points lying on a line <var>l</var>, then the set of lines {<var>X</var><var>f</var>(<var>X</var>) : the point <var>X</var> lies on <var>m</var>} is a line conic.</p></div>
+<p>I cannot resist the temptation of mentioning a beautiful result of Chasles whose proof lies beyond the scope of this course, but whose statement is so very simple:</p>
+<div class="statement"><b>Theorem.</b><p>The number of conics tangent to five prescribed conics in general position is 3264.</p></div>
+</div>
+</section>
+
+<section id="pascal">
+<h2><span class="n">7</span>Projective geometry of conics (continued)</h2>
+<div class="prose">
+<p>We continue our survey of the projective geometry of conics by establishing some simple consequences of the master theorems of Chasles and Steiner. The first is that five points (or five lines) in general position determine a conic. To see this, denote the points by <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>, <var>E</var> and consider the projective transformation <var>f</var> between the pencil of lines passing through <var>A</var> and the pencil of lines passing through <var>B</var> that takes <var>AC</var> to <var>BC</var>, <var>AD</var> to <var>BD</var>, and <var>AE</var> to <var>BE</var>. By the first fundamental theorem this transformation exists and is unique. Notice that by Steiner’s theorem the locus of points {<var>m</var>·<var>f</var>(<var>m</var>) : the line <var>m</var> passes through <var>A</var>} is a conic. It is easily verified that this conic passes through the five prescribed points.</p>
+</div>
+<figure class="svg row">
+  <div><img src="svg/five_points.svg" alt="Five points A to E; the lines from A and from B to C, D, E." width="300"><figcaption>Five points in general position determine a conic.</figcaption></div>
+  <div class="applet" data-applet="conic"><div class="board" style="aspect-ratio:1.9398"><div id="cs-conic"></div></div><div class="bar"><figcaption><b>Try it.</b> Drag any of the five points: the conic through them follows.</figcaption><button type="button" data-reset="conic">Reset</button></div></div>
+</figure>
+<div class="prose">
+<p>Another relatively simple consequence of Steiner’s theorem is a much earlier theorem of Pascal.</p>
+<div class="statement"><b>Pascal’s theorem.</b><p>The six vertices of a hexagon lie on a conic if and only if the three points obtained by intersecting the three pairs of opposite sides are collinear.</p></div>
+</div>
+<figure class="applet" data-applet="pascal"><div class="board" style="aspect-ratio:1.9398"><div id="cs-pascal"></div></div><div class="bar"><figcaption><b>Pascal’s theorem.</b> Slide <var>X</var> along the line <var>BC</var>. The blue line through <var>X</var> and <var>AB</var>·<var>DE</var> plays the role of the Pascal line and produces the sixth vertex <var>F</var> of the hexagon <var>ABCDEF</var>, which always lies on the conic through the other five.</figcaption><button type="button" data-reset="pascal">Reset</button></div></figure>
+<div class="prose">
+<p>Pascal’s theorem can also be used as a way of constructing a conic when five of its points are given:</p>
+</div>
+<figure class="applet" data-applet="construct"><div class="board" style="aspect-ratio:2.1727"><div id="cs-construct"></div></div><div class="bar"><figcaption><b>Drawing a conic with a ruler.</b> Slide <var>X</var> along the line <var>BC</var>: the point <var>F</var> leaves a trace, and the trace is the conic through <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>, <var>E</var> (dashed).</figcaption><button type="button" data-reset="construct">Reset</button></div></figure>
+<div class="prose">
+<p>The dual of Pascal’s theorem is as follows:</p>
+<div class="statement"><b>Brianchon’s theorem.</b><p>The six sides of a hexagon are tangent to a conic if and only if the three lines obtained by joining the three pairs of opposite vertices are concurrent.</p></div>
+</div>
+<figure class="svg"><img src="svg/brianchon.svg" alt="A hexagon circumscribed about an ellipse; its three main diagonals meet at one point." width="320"><figcaption>Brianchon’s theorem is the dual of Pascal’s.</figcaption></figure>
+<div class="prose">
+<h3>Pole and polar</h3>
+<p>A conic turns the principle of duality into a concrete correspondence: every point <var>P</var> has a <em>polar</em> line, and every line is the polar of a unique point, its <em>pole</em>. When <var>P</var> lies outside the conic, its polar is the line through the two points where the tangents from <var>P</var> touch the conic. Applying this correspondence to a hexagon inscribed in a conic produces a hexagon circumscribed about it, and Pascal’s theorem becomes Brianchon’s.</p>
+</div>
+<figure class="svg row">
+  <div class="applet" data-applet="polarity"><div class="board" style="aspect-ratio:1.9398"><div id="cs-polarity"></div></div><div class="bar"><figcaption><b>The polar of a point.</b> Drag <var>P</var> inside and outside the conic, or reshape the conic.</figcaption><button type="button" data-reset="polarity">Reset</button></div></div>
+  <div class="applet" data-applet="delahire"><div class="board" style="aspect-ratio:2.1481"><div id="cs-delahire"></div></div><div class="bar"><figcaption><b>La Hire’s theorem.</b> As <var>P</var> slides along the line <var>ℓ</var>, its polar always passes through <var>L</var>, the pole of <var>ℓ</var>.</figcaption><button type="button" data-reset="delahire">Reset</button></div></div>
+</figure>
+</section>
+
+<section id="conclusion">
+<h2>Conclusion</h2>
+<div class="prose">
+<p>Here ends our rapid survey of some of the classical results of projective geometry. We will elaborate further on these results throughout the course, but more importantly we shall see how they relate to other domains of mathematics such as linear algebra, group theory, the study of quadratic forms, complex analysis, hyperbolic geometry, and topology.</p>
+<h3>Acknowledgments</h3>
+<p><em>The original version (2001).</em> This interactive course on projective geometry was originally developed while I was at the Département de Mathématiques, Université Catholique de Louvain, Louvain-la-Neuve, Belgium. In preparing it, I made extensive use of a great quantity of software that is, for the most part, freely available through the internet. Indeed, it was the availability of this software that prompted me to undertake this experiment. I warmly thank the developers of Emacs, Linux, TeX, LaTeX, LaTeX2HTML, GIMP, Perl, HTML, XFig, and Cinderella (the only package that is not free) for the wonderful tools they have created.</p>
+<p><em>This edition (2026).</em> The Java applets of the original version no longer run in today’s browsers. The constructions were brought back to life with CindyJS, the open-source successor of Cinderella, by translating the original Cinderella files; the diagrams were redrawn in MetaPost from the original XFig sources; and the page itself is plain HTML. The conversion was carried out with the help of Claude, an AI assistant made by Anthropic. I thank the developers of CindyJS, MetaPost, LuaTeX, and Python.</p>
+<p>I hope that other geometers will also be tempted to experiment with these tools and will make their work freely accessible through the internet.</p>
+<h3>References</h3>
+<p>In preparing this lecture, I found the following texts very helpful:</p>
+<ol class="refs">
+  <li>M. Chasles, <i>Traité des Sections Coniques</i>, Gauthier-Villars, Paris, 1865.</li>
+  <li>F. Klein, <i>Vorlesungen über Höhere Geometrie</i>, 3rd ed., Chelsea Publishing Company, New York, 1957.</li>
+  <li>M. Kline, <i>Mathematical Thought from Ancient to Modern Times</i>, Oxford University Press, New York, 1972.</li>
+  <li>M. Kline, Projective geometry, in <i>Mathematics: An Introduction to its Spirit and Use</i>, M. Kline (ed.), Scientific American, 1979.</li>
+  <li>J.-V. Poncelet, <i>Traité des Propriétés Projectives des Figures</i>, Gauthier-Villars, Paris, 1866.</li>
+</ol>
+</div>
+<p class="note">This lecture was first published on the web in 2001, with Java applets made in Cinderella. In this edition the constructions run in any browser: they were translated to <a href="https://cindyjs.org">CindyJS</a> directly from the original Cinderella files, and the diagrams were redrawn in MetaPost from the original XFig sources. In every construction, <span class="dot drag"></span> colored points can be dragged and <span class="dot res"></span> blue marks what the theorem predicts.</p>
+</section>
+</main>
+<footer class="license"><p>© 2001, 2026 Juan Carlos Álvarez Paiva. Text and figures are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> (CC BY-SA 4.0): you may copy, adapt and share them, provided you credit the author and release any adaptation under the same license. The build scripts are licensed under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU GPL v3</a> or later. CindyJS is distributed under the Apache License 2.0. The reproductions of works by Dürer, Giotto and Raphael are in the public domain.</p></footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/cindyjs@0.0.5/build/js/Cindy.js"></script>
+<script>if (typeof CindyJS !== "function") document.write('<script src="Cindy.js"><\/script>');</script>
+<script>
+"use strict";
+const SPEC = {"conic":{"rect":[-8.64,7.88,12.0,-2.76],"aspect":1.9398496240601504,"geometry":[{"name":"A","type":"Free","pos":[1.638095238095238,-4.0,-0.9523809523809524],"size":5.5,"color":[0.78,0.25,0.15]},{"name":"B","type":"Free","pos":[-3.008849557522124,-4.0,-0.8849557522123895],"size":5.5,"color":[0.78,0.25,0.15]},{"name":"C","type":"Free","pos":[4.0,1.04,1.0],"size":5.5,"color":[0.78,0.25,0.15]},{"name":"D","type":"Free","pos":[4.0,-2.4,3.3333333333333335],"size":5.5,"color":[0.78,0.25,0.15]},{"name":"E","type":"Free","pos":[4.0,-0.48,-1.0],"size":5.5,"color":[0.78,0.25,0.15]},{"name":"C0","type":"ConicBy5","args":["A","B","C","D","E"],"size":2.2,"color":[0.13,0.15,0.19]}]},"construct":{"rect":[-6.16,5.76,15.48,-4.2],"aspect":2.1726907630522088,"geometry":[{"name":"A","type":"Free","pos":[2.2857142857142856,-4.0,-0.9523809523809524],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"B","type":"Free","pos":[4.0,1.6448598130841123,0.9345794392523364],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"C","type":"Free","pos":[4.0,3.9523809523809526,1.1904761904761907],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"D","type":"Free","pos":[4.0,0.6984126984126984,1.5873015873015872],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"E","type":"Free","pos":[4.0,-0.7741935483870966,-1.6129032258064515],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"a","type":"Join","args":["A","B"],"size":1.4,"color":[0.13,0.15,0.19]},{"name":"b","type":"Join","args":["E","D"],"size":1.4,"color":[0.13,0.15,0.19]},{"name":"G","type":"Meet","args":["a","b"],"size":4.1,"color":[0.13,0.15,0.19]},{"name":"c","type":"Join","args":["C","B"],"size":1.4,"color":[0.13,0.15,0.19]},{"name":"H","type":"PointOnLine","args":["c"],"pos":[2.99,3.94,1],"size":4.8,"color":[0.16,0.47,0.3],"printname":"X","labeled":true},{"name":"d","type":"Join","args":["E","H"],"size":2.2,"color":[0.13,0.15,0.19]},{"name":"e","type":"Join","args":["H","G"],"size":2.8,"color":[0.15,0.29,0.58]},{"name":"f","type":"Join","args":["C","D"],"size":1.4,"color":[0.13,0.15,0.19]},{"name":"K","type":"Meet","args":["e","f"],"size":4.1,"color":[0.13,0.15,0.19]},{"name":"g","type":"Join","args":["A","K"],"size":2.2,"color":[0.13,0.15,0.19]},{"name":"F","type":"Meet","args":["d","g"],"size":7.0,"color":[0.15,0.29,0.58],"labeled":true,"drawtrace":true,"tracelength":600,"tracedim":0.35},{"name":"C0","type":"ConicBy5","args":["A","B","C","D","E"],"size":1.7,"color":[0.13,0.15,0.19],"dashtype":1,"alpha":0.45}]},"delahire":{"rect":[-7.56,6.44,11.0,-2.2],"aspect":2.1481481481481484,"geometry":[{"name":"A","type":"Free","pos":[2.7184466019417477,-4.0,-0.970873786407767],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"B","type":"Free","pos":[4.0,-2.666666666666667,-0.9803921568627452],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"C","type":"Free","pos":[4.0,0.7719298245614035,-1.7543859649122808],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"D","type":"Free","pos":[4.0,0.41379310344827586,3.4482758620689653],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"E","type":"Free","pos":[-1.4545454545454546,-4.0,-1.1363636363636365],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"C0","type":"ConicBy5","args":["A","B","C","D","E"],"size":1,"color":[0.13,0.15,0.19]},{"name":"F","type":"Free","pos":[4.0,-0.2137404580152672,0.7633587786259541],"size":4.1,"color":[0.13,0.15,0.19]},{"name":"G","type":"Free","pos":[-3.5135135135135136,-4.0,-0.6756756756756757],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"a","type":"Join","args":["F","G"],"size":1.4,"color":[0.16,0.47,0.3],"printname":"ℓ","labeled":true},{"name":"H","type":"PointOnLine","args":["a"],"pos":[4.0,3.836810714525562,0.7683476336517459],"size":5.5,"color":[0.78,0.25,0.15],"printname":"P","labeled":true},{"name":"b","type":"PolarOfPoint","args":["H","C0"],"size":2.8,"color":[0.15,0.29,0.58],"printname":"polar of P","labeled":true},{"name":"K","type":"PolarOfLine","args":["a","C0"],"size":7.0,"color":[0.15,0.29,0.58],"printname":"L","labeled":true}]},"desargues":{"rect":[-6.12,5.8,12.32,-2.92],"aspect":2.114678899082569,"geometry":[{"name":"A","type":"Free","pos":[4.0,-1.2058823529411762,-0.7352941176470588],"size":4.1,"color":[0.13,0.15,0.19],"printname":"O","labeled":true},{"name":"B","type":"Free","pos":[2.3561643835616444,-4.0,-1.3698630136986303],"size":4.8,"color":[0.78,0.25,0.15]},{"name":"a","type":"Join","args":["A","B"],"size":1.4,"color":[0.13,0.15,0.19]},{"name":"C","type":"Free","pos":[4.0,0.7682119205298013,0.6622516556291391],"size":4.8,"color":[0.78,0.25,0.15]},{"name":"b","type":"Join","args":["A","C"],"size":1.4,"color":[0.13,0.15,0.19]},{"name":"D","type":"Free","pos":[4.0,0.14035087719298245,-1.7543859649122808],"size":4.8,"color":[0.16,0.47,0.3]},{"name":"c","type":"Join","args":["A","D"],"size":1.4,"color":[0.13,0.15,0.19]},{"name":"E","type":"PointOnLine","args":["a"],"pos":[-2.8429923909453882,-4.0,-0.8604538992337647],"size":4.8,"color":[0.16,0.47,0.3]},{"name":"F","type":"PointOnLine","args":["b"],"pos":[4.0,-2.1005294908662964,-1.3686530929418523],"size":4.8,"color":[0.16,0.47,0.3]},{"name":"G","type":"PointOnLine","args":["c"],"pos":[4.0,1.8033392625863114,-3.013259886396307],"size":4.8,"color":[0.78,0.25,0.15]},{"name":"d","type":"Join","args":["B","C"],"size":1.7,"color":[0.78,0.25,0.15]},{"name":"e","type":"Join","args":["C","G"],"size":1.7,"color":[0.78,0.25,0.15]},{"name":"f","type":"Join","args":["B","G"],"size":1.7,"color":[0.78,0.25,0.15]},{"name":"g","type":"Join","args":["E","F"],"size":1.7,"color":[0.16,0.47,0.3]},{"name":"h","type":"Join","args":["D","E"],"size":1.7,"color":[0.16,0.47,0.3]},{"name":"k","type":"Join","args":["D","F"],"size":1.7,"color":[0.16,0.47,0.3]},{"name":"H","type":"Meet","args":["d","g"],"size":4.9,"color":[0.15,0.29,0.58]},{"name":"K","type":"Meet","args":["f","h"],"size":4.9,"color":[0.15,0.29,0.58]},{"name":"L","type":"Meet","args":["e","k"],"size":4.9,"color":[0.15,0.29,0.58]},{"name":"l","type":"Join","args":["K","L"],"size":2.8,"color":[0.15,0.29,0.58]}]},"first":{"rect":[-7.2,6.64,14.44,-3.32],"aspect":2.1726907630522088,"geometry":[{"name":"A","type":"Free","pos":[4.0,-3.5675675675675675,-1.3513513513513513],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"B","type":"Free","pos":[-3.3103448275862064,-4.0,-1.1494252873563218],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"C","type":"Free","pos":[4.0,-1.1153846153846152,-0.9615384615384615],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"D","type":"Free","pos":[4.0,-3.235294117647059,1.4705882352941175],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"a","type":"Join","args":["A","B"],"size":1.7,"color":[0.13,0.15,0.19]},{"name":"b","type":"Join","args":["C","D"],"size":1.7,"color":[0.13,0.15,0.19]},{"name":"E","type":"PointOnLine","args":["a"],"pos":[1.760862010367029,-4.0,-1.3873505411476936],"size":4.8,"color":[0.78,0.25,0.15]},{"name":"F","type":"PointOnLine","args":["a"],"pos":[-0.4510106329358827,-4.0,-1.2835763554699429],"size":4.8,"color":[0.78,0.25,0.15]},{"name":"G","type":"PointOnLine","args":["a"],"pos":[4.0,3.6958561767307794,1.0178619343223723],"size":4.8,"color":[0.78,0.25,0.15]},{"name":"H","type":"PointOnLine","args":["b"],"pos":[4.0,0.4104932788535568,-2.712145437318647],"size":4.8,"color":[0.16,0.47,0.3]},{"name":"K","type":"PointOnLine","args":["b"],"pos":[-1.9297761165397465,-2.5440628268061714,4.0],"size":4.8,"color":[0.16,0.47,0.3]},{"name":"L","type":"PointOnLine","args":["b"],"pos":[2.5907820463637856,-4.0,3.1375020551323507],"size":4.8,"color":[0.16,0.47,0.3]},{"name":"c","type":"Join","args":["H","E"],"size":1.7,"color":[0.13,0.15,0.19]},{"name":"M","type":"PointOnLine","args":["c"],"pos":[0.783546289054134,-4.0,-0.7200547400221013],"size":4.8,"color":[0.7,0.52,0.06]},{"name":"d","type":"Join","args":["M","F"],"size":1.7,"color":[0.13,0.15,0.19]},{"name":"e","type":"Join","args":["M","G"],"size":1.7,"color":[0.13,0.15,0.19]},{"name":"N","type":"PointOnLine","args":["c"],"pos":[-3.563509624286535,-4.0,2.2480466574808475],"size":4.8,"color":[0.7,0.52,0.06]},{"name":"f","type":"Join","args":["N","K"],"size":1.7,"color":[0.13,0.15,0.19]},{"name":"g","type":"Join","args":["N","L"],"size":1.7,"color":[0.13,0.15,0.19]},{"name":"O","type":"Meet","args":["d","f"],"size":4.8,"color":[0.13,0.15,0.19]},{"name":"P","type":"Meet","args":["e","g"],"size":4.8,"color":[0.13,0.15,0.19]},{"name":"h","type":"Join","args":["P","O"],"size":1.7,"color":[0.13,0.15,0.19]},{"name":"Q","type":"Meet","args":["c","h"],"size":4.8,"color":[0.13,0.15,0.19]}]},"harmonic":{"rect":[-8.28,8.08,12.04,-0.12],"aspect":2.478048780487805,"geometry":[{"name":"U","type":"Free","pos":[4.0,-0.8181818181818182,-0.7575757575757576],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"V","type":"Free","pos":[4.0,0.45188284518828453,0.41841004184100417],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"a","type":"Join","args":["U","V"],"size":2.2,"color":[0.13,0.15,0.19]},{"name":"A","type":"PointOnLine","args":["a"],"pos":[4.0,-0.9999999999999999,-0.9259259259259258],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"C","type":"PointOnLine","args":["a"],"pos":[4.0,-3.272727272727272,-3.03030303030303],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"B","type":"PointOnLine","args":["a"],"pos":[-0.7407407407407409,-4.0,-3.703703703703704],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"F","type":"Free","pos":[0.5185185185185184,-4.0,-0.6172839506172839],"size":4.8,"color":[0.78,0.25,0.15]},{"name":"b","type":"Join","args":["F","A"],"size":1.7,"color":[0.55,0.58,0.62],"dashtype":1,"alpha":0.6},{"name":"c","type":"Join","args":["F","C"],"size":1.7,"color":[0.55,0.58,0.62],"dashtype":1,"alpha":0.6},{"name":"d","type":"Join","args":["F","B"],"size":1.7,"color":[0.55,0.58,0.62],"dashtype":1,"alpha":0.6},{"name":"G","type":"PointOnLine","args":["b"],"pos":[1.4098820600162325,-4.0,-0.7949880059397948],"size":4.8,"color":[0.78,0.25,0.15]},{"name":"e","type":"Join","args":["G","B"],"size":1.7,"color":[0.55,0.58,0.62],"dashtype":1,"alpha":0.6},{"name":"H","type":"Meet","args":["c","e"],"size":4.8,"color":[0.13,0.15,0.19]},{"name":"f","type":"Join","args":["A","H"],"size":1.7,"color":[0.55,0.58,0.62],"dashtype":1,"alpha":0.6},{"name":"K","type":"Meet","args":["d","f"],"size":4.8,"color":[0.13,0.15,0.19]},{"name":"g","type":"Join","args":["G","K"],"size":2.2,"color":[0.55,0.58,0.62],"dashtype":1,"alpha":0.6},{"name":"D","type":"Meet","args":["a","g"],"size":7.0,"color":[0.15,0.29,0.58],"labeled":true}]},"pappus":{"rect":[-6.12,5.8,12.32,-2.92],"aspect":2.114678899082569,"geometry":[{"name":"A","type":"Free","pos":[4.0,-3.0825688073394493,-0.9174311926605504],"size":4.8,"color":[0.7,0.52,0.06],"labeled":true},{"name":"B","type":"Free","pos":[-0.5048543689320389,-4.0,-0.970873786407767],"size":4.8,"color":[0.16,0.47,0.3],"labeled":true},{"name":"a","type":"Join","args":["A","B"],"size":2.2,"color":[0.13,0.15,0.19]},{"name":"C","type":"PointOnLine","args":["a"],"pos":[4.0,3.5421672507997757,0.7227542913336567],"size":4.8,"color":[0.78,0.25,0.15],"labeled":true},{"name":"D","type":"Free","pos":[4.0,-0.1951219512195122,-1.2195121951219514],"size":4.8,"color":[0.7,0.52,0.06],"printname":"A'","labeled":true},{"name":"E","type":"Free","pos":[4.0,-1.254901960784314,1.9607843137254903],"size":4.8,"color":[0.16,0.47,0.3],"printname":"B'","labeled":true},{"name":"b","type":"Join","args":["D","E"],"size":2.2,"color":[0.13,0.15,0.19]},{"name":"F","type":"PointOnLine","args":["b"],"pos":[4.0,-0.825286548758381,0.6715503381061517],"size":4.8,"color":[0.78,0.25,0.15],"printname":"C'","labeled":true},{"name":"c","type":"Join","args":["A","E"],"size":1.7,"color":[0.13,0.15,0.19]},{"name":"d","type":"Join","args":["A","F"],"size":1.7,"color":[0.13,0.15,0.19]},{"name":"e","type":"Join","args":["B","D"],"size":1.7,"color":[0.13,0.15,0.19]},{"name":"f","type":"Join","args":["B","F"],"size":1.7,"color":[0.13,0.15,0.19]},{"name":"g","type":"Join","args":["C","E"],"size":1.7,"color":[0.13,0.15,0.19]},{"name":"h","type":"Join","args":["C","D"],"size":1.7,"color":[0.13,0.15,0.19]},{"name":"G","type":"Meet","args":["d","h"],"size":5.6,"color":[0.15,0.29,0.58]},{"name":"H","type":"Meet","args":["f","g"],"size":5.6,"color":[0.15,0.29,0.58]},{"name":"K","type":"Meet","args":["c","e"],"size":5.6,"color":[0.15,0.29,0.58]},{"name":"k","type":"Join","args":["G","K"],"size":2.8,"color":[0.15,0.29,0.58]}]},"pappus_dual":{"rect":[-6.12,5.8,12.32,-2.92],"aspect":2.114678899082569,"geometry":[{"name":"A","type":"Free","pos":[1.2100840336134453,-4.0,-0.8403361344537815],"size":4.8,"color":[0.78,0.25,0.15]},{"name":"B","type":"Free","pos":[4.0,-2.1333333333333333,-1.6666666666666667],"size":4.8,"color":[0.13,0.15,0.19]},{"name":"a","type":"Join","args":["A","B"],"size":1.7,"color":[0.7,0.52,0.06],"labeled":true},{"name":"C","type":"Free","pos":[0.64,-1.6,4.0],"size":4.8,"color":[0.13,0.15,0.19]},{"name":"b","type":"Join","args":["A","C"],"size":1.7,"color":[0.16,0.47,0.3],"labeled":true},{"name":"D","type":"Free","pos":[4.0,-1.4117647058823528,1.4705882352941175],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"c","type":"Join","args":["A","D"],"size":1.7,"color":[0.78,0.25,0.15],"labeled":true},{"name":"E","type":"Free","pos":[4.0,-0.8128342245989304,0.53475935828877],"size":4.8,"color":[0.16,0.47,0.3]},{"name":"F","type":"PointOnLine","args":["b"],"pos":[1.1930993987142988,-4.0,-1.3125382685033358],"size":4.8,"color":[0.13,0.15,0.19]},{"name":"d","type":"Join","args":["E","F"],"size":1.7,"color":[0.7,0.52,0.06],"printname":"a'","labeled":true},{"name":"e","type":"Join","args":["E","B"],"size":1.7,"color":[0.16,0.47,0.3],"printname":"b'","labeled":true},{"name":"f","type":"Join","args":["E","C"],"size":1.7,"color":[0.78,0.25,0.15],"printname":"c'","labeled":true},{"name":"g","type":"Join","args":["B","F"],"size":2.8,"color":[0.15,0.29,0.58]},{"name":"G","type":"Meet","args":["c","d"],"size":4.8,"color":[0.13,0.15,0.19]},{"name":"H","type":"Meet","args":["a","f"],"size":4.8,"color":[0.13,0.15,0.19]},{"name":"h","type":"Join","args":["G","H"],"size":2.8,"color":[0.15,0.29,0.58]},{"name":"K","type":"Meet","args":["c","e"],"size":4.8,"color":[0.13,0.15,0.19]},{"name":"k","type":"Join","args":["C","K"],"size":2.8,"color":[0.15,0.29,0.58]},{"name":"L","type":"Meet","args":["h","k"],"size":4.9,"color":[0.15,0.29,0.58]}]},"pascal":{"rect":[-8.64,7.88,12.0,-2.76],"aspect":1.9398496240601504,"geometry":[{"name":"A","type":"Free","pos":[1.8666666666666665,-4.0,-0.9523809523809524],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"B","type":"Free","pos":[4.0,1.6448598130841123,0.9345794392523364],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"C","type":"Free","pos":[4.0,3.959183673469388,1.0204081632653061],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"D","type":"Free","pos":[4.0,0.6984126984126984,1.5873015873015872],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"E","type":"Free","pos":[4.0,-0.7741935483870966,-1.6129032258064515],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"C0","type":"ConicBy5","args":["A","B","C","D","E"],"size":2.2,"color":[0.13,0.15,0.19]},{"name":"a","type":"Join","args":["A","B"],"size":1.4,"color":[0.13,0.15,0.19]},{"name":"b","type":"Join","args":["E","D"],"size":1.4,"color":[0.13,0.15,0.19]},{"name":"G","type":"Meet","args":["a","b"],"size":4.1,"color":[0.13,0.15,0.19]},{"name":"c","type":"Join","args":["C","B"],"size":1.4,"color":[0.13,0.15,0.19]},{"name":"H","type":"PointOnLine","args":["c"],"pos":[-2.4953193213643554,-4.0,-0.6933077469602392],"size":4.1,"color":[0.13,0.15,0.19],"printname":"X","labeled":true},{"name":"d","type":"Join","args":["E","H"],"size":2.2,"color":[0.13,0.15,0.19]},{"name":"e","type":"Join","args":["H","G"],"size":2.8,"color":[0.15,0.29,0.58]},{"name":"f","type":"Join","args":["C","D"],"size":1.4,"color":[0.13,0.15,0.19]},{"name":"K","type":"Meet","args":["e","f"],"size":4.1,"color":[0.13,0.15,0.19]},{"name":"g","type":"Join","args":["A","K"],"size":2.2,"color":[0.13,0.15,0.19]},{"name":"F","type":"Meet","args":["d","g"],"size":7.0,"color":[0.15,0.29,0.58],"labeled":true}]},"polarity":{"rect":[-6.88,7.08,13.76,-3.56],"aspect":1.9398496240601504,"geometry":[{"name":"A","type":"Free","pos":[-0.3333333333333333,-4.0,-0.8333333333333334],"size":2.7,"color":[0.13,0.15,0.19]},{"name":"B","type":"Free","pos":[-3.820895522388059,-4.0,-1.4925373134328357],"size":2.7,"color":[0.13,0.15,0.19]},{"name":"C","type":"Free","pos":[4.0,0.7878787878787878,1.5151515151515151],"size":2.7,"color":[0.13,0.15,0.19]},{"name":"D","type":"Free","pos":[0.16,-2.24,4.0],"size":2.7,"color":[0.13,0.15,0.19]},{"name":"E","type":"Free","pos":[4.0,-3.52,-2.0],"size":2.7,"color":[0.13,0.15,0.19]},{"name":"C0","type":"ConicBy5","args":["A","B","C","D","E"],"size":2.2,"color":[0.13,0.15,0.19]},{"name":"F","type":"Free","pos":[1.6811594202898552,-4.0,-1.4492753623188408],"size":5.5,"color":[0.16,0.47,0.3],"printname":"P","labeled":true},{"name":"a","type":"PolarOfPoint","args":["F","C0"],"size":2.8,"color":[0.15,0.29,0.58],"printname":"polar of P","labeled":true}]},"trans":{"rect":[-8.28,7.6,9.92,-0.44],"aspect":2.263681592039801,"geometry":[{"name":"A","type":"Free","pos":[4.0,-1.0337078651685394,-0.5617977528089888],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"B","type":"Free","pos":[4.0,0.9019607843137255,0.4901960784313726],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"a","type":"Join","args":["A","B"],"size":2.2,"color":[0.13,0.15,0.19]},{"name":"C","type":"Free","pos":[0.5555555555555556,-4.0,-0.6944444444444444],"size":5.5,"color":[0.78,0.25,0.15],"printname":"P","labeled":true},{"name":"D","type":"Free","pos":[2.619718309859155,-4.0,-0.704225352112676],"size":5.5,"color":[0.16,0.47,0.3],"printname":"Q","labeled":true},{"name":"E","type":"Free","pos":[4.0,-0.45783132530120485,-0.6024096385542169],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"F","type":"Free","pos":[-1.9880239520958083,-4.0,-0.5988023952095808],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"b","type":"Join","args":["E","F"],"size":2.2,"color":[0.13,0.15,0.19],"printname":"m","labeled":true},{"name":"X","type":"PointOnLine","args":["a"],"pos":[4.0,-2.5915492957746475,-1.4084507042253518],"size":5.5,"color":[0.13,0.15,0.19],"labeled":true},{"name":"c","type":"Join","args":["C","X"],"size":2.2,"color":[0.13,0.15,0.19]},{"name":"H","type":"Meet","args":["b","c"],"size":5.5,"color":[0.13,0.15,0.19]},{"name":"d","type":"Join","args":["D","H"],"size":2.2,"color":[0.13,0.15,0.19]},{"name":"T(X)","type":"Meet","args":["a","d"],"size":7.0,"color":[0.15,0.29,0.58],"labeled":true}]},"infinity":{"rect":[-6.5,4.2,8.5,-3.2],"aspect":2.0270270270270268,"geometry":[{"name":"U","type":"Free","pos":[0,3.6,1],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"V","type":"Free","pos":[0,-2.8,1],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"l","type":"Join","args":["U","V"],"size":1.7,"color":[0.13,0.15,0.19],"labeled":true},{"name":"W","type":"Free","pos":[-5.5,-1.8,1],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"Z","type":"Free","pos":[7.5,-1.8,1],"size":2.5,"color":[0.55,0.58,0.62]},{"name":"m","type":"Join","args":["W","Z"],"size":1.7,"color":[0.13,0.15,0.19],"labeled":true},{"name":"P","type":"Free","pos":[-3.5,2.2,1],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"A","type":"PointOnLine","args":["l"],"pos":[0,0.8,1],"size":5.5,"color":[0.78,0.25,0.15],"labeled":true},{"name":"p","type":"Join","args":["P","A"],"size":1,"color":[0.13,0.15,0.19]},{"name":"A'","type":"Meet","args":["p","m"],"size":7.0,"color":[0.15,0.29,0.58],"labeled":true},{"name":"q","type":"Para","args":["m","P"],"size":1,"color":[0.55,0.58,0.62],"dashtype":1,"alpha":0.6},{"name":"B","type":"Meet","args":["l","q"],"size":4.8,"color":[0.13,0.15,0.19],"labeled":true}]}};
+const instances = {};
+function start(name) {
+  const host = document.getElementById("cs-" + name);
+  if (instances[name]) { try { instances[name].shutdown(); } catch (e) {} }
+  host.innerHTML = "";
+  const inner = document.createElement("div");
+  inner.id = "cs-" + name + "-" + Date.now();
+  inner.style.position = "absolute"; inner.style.inset = "0";
+  host.appendChild(inner);
+  const s = JSON.parse(JSON.stringify(SPEC[name]));
+  instances[name] = CindyJS({
+    ports: [{ id: inner.id, fill: "parent", background: "rgb(255,255,255)",
+              transform: [{ visibleRect: s.rect }] }],
+    geometry: s.geometry,
+    defaultAppearance: { textsize: 17, fontFamily: "'Source Serif 4', Georgia, serif",
+                         dimDependent: 1, lineSize: 1.2, pointSize: 4 }
+  });
+}
+function boot() {
+  if (typeof CindyJS !== "function") {
+    document.querySelectorAll(".applet .board").forEach(b => {
+      b.innerHTML = '<p style="padding:1em;font:0.9rem var(--ui);color:var(--muted)">The interactive figure could not load (CindyJS was not reached).</p>';
+    });
+    return;
+  }
+  document.querySelectorAll("[data-applet]").forEach(fig => start(fig.dataset.applet));
+  document.querySelectorAll("[data-reset]").forEach(b => b.addEventListener("click", () => start(b.dataset.reset)));
+}
+if (document.readyState === "complete") boot(); else window.addEventListener("load", boot);
+</script>
+</body>
+</html>

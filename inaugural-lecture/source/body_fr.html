@@ -1,0 +1,206 @@
+<header class="top">
+  <!--LANGS-->
+  <div class="kicker">Cours interactif de géométrie projective · Leçon inaugurale</div>
+  <h1>Introduction à la géométrie projective</h1>
+  <div class="byline">Juan Carlos Álvarez Paiva</div>
+  <div class="affil">Laboratoire Paul Painlevé, Université de Lille, France</div>
+</header>
+<nav class="toc" aria-label="Sommaire">
+  <ol>
+    <li><a href="#perspective"><b>1</b>La perspective</a></li>
+    <li><a href="#infinity"><b>2</b>L’infini et les invariants</a></li>
+    <li><a href="#transformations"><b>3</b>Transformations projectives</a></li>
+    <li><a href="#cross-ratio"><b>4</b>Le birapport</a></li>
+    <li><a href="#duality"><b>5</b>Le plan et la dualité</a></li>
+    <li><a href="#conics"><b>6</b>Les coniques</a></li>
+    <li><a href="#pascal"><b>7</b>Pascal et Brianchon</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+<main>
+
+<section id="perspective">
+<div class="prose">
+<p>Il y a trente ans, l’étude de la géométrie projective aurait semblé un peu comme l’étude du latin&nbsp;: bonne pour l’esprit et un moyen de garder le contact avec les anciens. Aujourd’hui, pourtant, la géométrie projective est un sujet en vogue chez les mathématiciens et les informaticiens. Cela est dû aux nouvelles applications à la vision par ordinateur et au fait que la géométrie et la pensée géométrique connaissent un nouvel essor. De plus, l’informatique a rendu la pareille en fournissant des outils puissants pour la visualisation et la diffusion des mathématiques. Les figures interactives, les animations et les pages web reliées entre elles nous permettent de présenter les mathématiques, et tout particulièrement la géométrie, d’une manière impensable il y a trente ans.</p>
+<p>Dans ce cours, nous étudierons la géométrie projective d’un point de vue moderne et avec des outils modernes. Nous consacrerons beaucoup d’efforts à l’étude d’idées générales qui unifient la géométrie, comme les actions de groupes, les espaces homogènes, les invariants, la dualité, la compactification, la complexification et les espaces métriques. L’étudiant en géométrie aura tout intérêt à maîtriser ces idées avant d’aborder des notions plus complexes comme les connexions, les fibrés, les spineurs et les twisteurs. D’un autre côté, ces concepts abstraits seront illustrés par des constructions géométriques d’une grande simplicité. Ces constructions prennent vie lorsqu’elles sont présentées sous forme de figures interactives. De plus, comme ces constructions, et en fait le cours tout entier, sont disponibles sur internet, l’étudiant peut mieux employer le temps de cours pour poser des questions, résoudre des problèmes et élargir ses horizons.</p>
+<p>Passons maintenant à une courte description du contenu de ce cours. Aujourd’hui nous ne traiterons que des idées les plus élémentaires et les plus visuelles, mais je pense que cela suffira à vous donner une idée de ce qui se trouve au-delà.</p>
+</div>
+<h2><span class="n">1</span>La perspective</h2>
+<div class="prose">
+<p>Les architectes et les peintres de la Renaissance se sont demandé comment représenter un objet tridimensionnel sur une surface à deux dimensions. Les informaticiens se demandent aujourd’hui comment faire reconnaître à un ordinateur que deux images distinctes représentent le même objet vu de deux points de vue différents. En réponse à la première question, Leone Battista Alberti (1404–1472) proposa la procédure suivante&nbsp;: interposer un écran de verre entre soi et l’objet, fermer un œil et marquer sur le verre les points qui semblent appartenir à l’image. L’image obtenue, bien que bidimensionnelle, donnera une impression fidèle de l’objet tridimensionnel.</p>
+</div>
+<figure class="art">
+  <img src="images/perspective.jpg" alt="Gravure sur bois d’Albrecht Dürer&nbsp;: un dessinateur, regardant à travers un viseur, trace sur un écran de verre encadré le contour d’un homme assis." width="300" height="265" style="width:min(100%,420px)">
+  <figcaption>Cette gravure sur bois d’Albrecht Dürer illustre l’idée d’Alberti.</figcaption>
+</figure>
+<div class="prose">
+<p>La méthode d’Alberti a été décrite comme une <em>projection suivie d’une section</em>&nbsp;: on trace d’abord le faisceau des rayons lumineux qui vont de l’objet à l’œil, puis on le coupe par l’écran de verre. Comme nous sommes libres de déplacer l’œil et la position de l’écran, nous obtenons beaucoup de représentations bidimensionnelles différentes de l’objet tridimensionnel. Un problème intéressant, posé par Alberti lui-même, est de reconnaître les propriétés communes à toutes ces représentations. C’est la même question que se posent aujourd’hui les informaticiens.</p>
+</div>
+<figure class="art">
+  <div class="pair">
+    <img src="images/giotto.jpg" alt="Giotto, L’Épiphanie&nbsp;: la scène de la Nativité sous un abri de bois dont les lignes ne convergent pas vers un même point de fuite." width="300" height="308">
+    <img src="images/raphael.jpg" alt="Raphaël, L’École d’Athènes&nbsp;: des philosophes dans une salle voûtée dessinée en perspective centrale exacte." width="399" height="267">
+  </div>
+  <figcaption>Les essais de perspective de Giotto dans <i>L’Épiphanie</i> (à gauche) et <i>L’École d’Athènes</i> de Raphaël (à droite). Voyez-vous ce qui ne va pas dans la perspective de Giotto&nbsp;?</figcaption>
+</figure>
+</section>
+
+<section id="infinity">
+<h2><span class="n">2</span>Points et droites à l’infini</h2>
+<div class="prose">
+<p>La méthode de projection et section a ceci de particulier que certains points d’une représentation semblent n’avoir aucune image dans une autre. Par exemple, dans la figure plane suivante, le point <var>B</var> semble n’avoir aucune image.</p>
+</div>
+<!--APPLET infinity|<b>Le point à l’infini.</b> Le point <var>A</var> de la droite <var>l</var> est projeté depuis <var>P</var> sur le point <var>A′</var> de <var>m</var>. Faites glisser <var>A</var> vers <var>B</var>&nbsp;: son image s’enfuit le long de <var>m</var>, et lorsque <var>A</var> atteint <var>B</var> la droite de projection est parallèle à <var>m</var>.-->
+<div class="prose">
+<p>La manière classique de surmonter cette difficulté est de décréter que l’image de <var>B</var> est le point à l’infini de la droite <var>m</var>. Cette notion de points idéaux peut être rendue rigoureuse, mais nous laisserons cela pour les prochaines leçons (voir le chapitre deux des notes de cours). Le même phénomène se produit dans la figure suivante, mais là c’est toute une droite du plan de départ qui n’a pas d’image dans le plan d’arrivée. On dit que l’image de cette droite est la droite à l’infini du plan d’arrivée.</p>
+</div>
+<figure class="svg"><img src="svg/infinity_line.svg" alt="Projection depuis un point entre deux plans&nbsp;: la droite où le plan de départ rencontre le plan passant par l’œil parallèle au plan d’arrivée n’a pas d’image." width="320"><figcaption>Toute une droite du plan de départ est envoyée à l’infini.</figcaption></figure>
+<div class="prose">
+<p>La droite munie de son point idéal à l’infini sera appelée la <em>droite projective</em>, et le plan muni de sa droite idéale à l’infini sera appelé le <em>plan projectif</em>.</p>
+<h3>Les invariants</h3>
+<p>Chaque fois que l’on dispose d’une classe de transformations, dans notre cas celles obtenues par projection et section, il est intéressant d’étudier quelles propriétés elles préservent et lesquelles elles ne préservent pas. Les propriétés préservées s’appellent des <em>invariants</em>, et l’essentiel des mathématiques et de la physique consiste à les étudier.</p>
+<p>Le problème posé par Alberti est de déterminer les invariants de la perspective. Il est clair que les distances ne sont pas préservées, ni les angles, ni les aires. Des droites parallèles ne sont pas envoyées sur des droites parallèles. Cette capacité à déformer les images semble rendre la perspective difficile à étudier. Mais tout n’est pas déformé&nbsp;: les droites sont envoyées sur des droites, et si un point est sur une droite, alors, depuis n’importe quel autre point de vue, le point correspondant sera sur la droite correspondante. On dit que l’<em>incidence</em> est préservée. Cela peut sembler peu, mais cela suffit pour développer une théorie mathématique d’une grande puissance et d’une grande beauté.</p>
+<p>Les deux résultats classiques qui ne dépendent que de la notion d’incidence sont les théorèmes de Pappus et de Desargues. Avant de les énoncer, fixons quelques notations. La droite qui joint deux points <var>X</var> et <var>Y</var> est notée <var>XY</var>, tandis que le point d’intersection des droites <var>a</var> et <var>b</var> est noté <var>a</var>·<var>b</var>.</p>
+<div class="statement"><b>Théorème de Pappus.</b><p>Si <var>A</var>, <var>B</var>, <var>C</var> et <var>A′</var>, <var>B′</var>, <var>C′</var> sont deux triplets de points alignés, alors les points <var>AB′</var>·<var>BA′</var>, <var>AC′</var>·<var>CA′</var> et <var>BC′</var>·<var>CB′</var> sont alignés.</p></div>
+</div>
+<!--APPLET pappus|<b>Le théorème de Pappus.</b> Déplacez <var>A</var>, <var>B</var>, <var>A′</var>, <var>B′</var>, ou faites glisser <var>C</var> et <var>C′</var> le long de leurs droites. Les trois points du théorème restent alignés.-->
+<div class="prose">
+<div class="statement"><b>Théorème de Desargues.</b><p>Si deux triangles sont en perspective, alors leurs côtés correspondants se coupent en trois points alignés.</p></div>
+</div>
+<!--APPLET desargues|<b>Le théorème de Desargues.</b> Le triangle rouge et le triangle vert sont en perspective depuis le point <var>O</var>. Déplacez leurs sommets ou <var>O</var>&nbsp;: les trois points où se coupent les côtés correspondants restent alignés.-->
+</section>
+
+<section id="transformations">
+<h2><span class="n">3</span>Transformations projectives</h2>
+<div class="prose">
+<p>Pour étudier plus en détail les invariants de la perspective, nous simplifions la situation en considérant une classe de transformations de la droite réelle dans elle-même. Ces transformations se décrivent ainsi&nbsp;: plaçons la droite réelle dans le plan, traçons une seconde droite <var>m</var> et deux points <var>P</var> et <var>Q</var> comme dans la figure ci-dessous. Si <var>X</var> est un point de la droite réelle, son image <var>T</var>(<var>X</var>) est l’intersection de la droite réelle avec la droite qui passe par le point <var>Q</var> et par l’intersection de <var>XP</var> et <var>m</var>. Si cette droite est parallèle à la droite réelle, on dit que l’image de <var>X</var> est le <em>point à l’infini</em>.</p>
+</div>
+<!--APPLET trans|<b>Une transformation projective de la droite.</b> Faites glisser <var>X</var> le long de la droite réelle et observez <var>T</var>(<var>X</var>). Déplacez <var>P</var>, <var>Q</var>, ou la droite oblique <var>m</var> (par ses petits points d’extrémité) pour obtenir d’autres transformations.-->
+<div class="prose">
+<p>En déplaçant la droite <var>m</var> ou les points <var>P</var> et <var>Q</var>, nous obtenons beaucoup de transformations différentes. Une version jouet du problème d’Alberti est&nbsp;: <em>quels sont les invariants de ce type de transformations&nbsp;?</em></p>
+<p>Une remarque préliminaire, qui semble presque triviale mais qui est en fait très importante, est que toute quantité invariante par ces transformations est invariante par leurs composées. Convenons d’appeler <em>transformations projectives</em> toutes les transformations que l’on peut obtenir par la construction ci-dessus ou en composant de telles transformations.</p>
+<p>Pour voir comment une transformation projective peut déplacer les choses, considérons d’abord deux droites portant chacune trois points. Il n’est pas difficile de voir qu’en combinant deux perspectives on peut envoyer les trois points de la première droite sur les trois points de la seconde. La construction est donnée par la figure ci-dessous.</p>
+</div>
+<!--APPLET first|<b>Trois points sur trois points.</b> Deux perspectives, centrées aux points dorés, envoient les trois points rouges d’une droite sur les trois points verts de l’autre. Déplacez-les à votre guise.-->
+<div class="prose">
+<p>En appliquant deux fois cette construction pour revenir sur la droite de départ, on voit qu’une transformation projective peut envoyer trois points donnés sur trois points donnés. En fait, il y a mieux&nbsp;:</p>
+<div class="statement"><b>Premier théorème fondamental.</b><p>Si <var>A</var>, <var>B</var>, <var>C</var> et <var>A′</var>, <var>B′</var>, <var>C′</var> sont deux triplets de points distincts d’une droite, il existe une et une seule transformation projective qui envoie <var>A</var> sur <var>A′</var>, <var>B</var> sur <var>B′</var> et <var>C</var> sur <var>C′</var>.</p></div>
+<p>Le revers de ce résultat est qu’il ne peut exister aucun invariant des transformations projectives faisant intervenir seulement trois points. Essayons maintenant avec quatre points.</p>
+</div>
+</section>
+
+<section id="cross-ratio">
+<h2><span class="n">4</span>Le birapport</h2>
+<div class="prose">
+<p>Prenons quatre points <var>A</var>, <var>B</var>, <var>C</var> et <var>D</var> de la droite réelle achevée (on ajoute l’infini comme point idéal). D’après le premier théorème fondamental, il existe une et une seule transformation projective <var>T</var> qui envoie <var>A</var> à l’infini, <var>B</var> sur zéro et <var>C</var> sur un. Le nombre <var>T</var>(<var>D</var>) est le <em>birapport</em> des quatre points. On le note habituellement [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>]. Il n’est pas difficile de voir que le birapport de quatre points est invariant par les transformations projectives. Autrement dit, si <var>A</var>, <var>B</var>, <var>C</var> et <var>D</var> sont quatre points et <var>S</var> est une transformation projective, alors [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>] = [<var>S</var>(<var>A</var>), <var>S</var>(<var>B</var>), <var>S</var>(<var>C</var>), <var>S</var>(<var>D</var>)].</p>
+<p>Raisonnons ainsi&nbsp;: si <var>T</var> est l’unique transformation projective qui envoie <var>A</var> à l’infini, <var>B</var> sur zéro et <var>C</var> sur un, alors [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>] = <var>T</var>(<var>D</var>). D’autre part, si <var>R</var> est l’unique transformation projective qui envoie <var>S</var>(<var>A</var>) à l’infini, <var>S</var>(<var>B</var>) sur zéro et <var>S</var>(<var>C</var>) sur un, alors [<var>S</var>(<var>A</var>), <var>S</var>(<var>B</var>), <var>S</var>(<var>C</var>), <var>S</var>(<var>D</var>)] = <var>R</var>(<var>S</var>(<var>D</var>)). Comme la composée <var>TS</var><sup>−1</sup> envoie elle aussi <var>S</var>(<var>A</var>) à l’infini, <var>S</var>(<var>B</var>) sur zéro et <var>S</var>(<var>C</var>) sur un, on a <var>TS</var><sup>−1</sup> = <var>R</var> et <var>R</var>(<var>S</var>(<var>D</var>)) = <var>T</var>(<var>D</var>).</p>
+<p>Bien entendu, il serait utile de savoir calculer des birapports. Il se trouve que la formule est assez simple&nbsp;: si <var>x</var><sub>0</sub>, <var>x</var><sub>1</sub>, <var>x</var><sub>2</sub> et <var>x</var><sub>3</sub> sont les coordonnées de quatre points de la droite réelle achevée, alors</p>
+<div class="formula">
+<!--FORMULA-->
+</div>
+<p>Le birapport est l’analogue projectif de la distance en géométrie euclidienne. C’est l’invariant qui définit la géométrie&nbsp;:</p>
+<div class="statement"><b>Second théorème fondamental.</b><p>Si une transformation de la droite projective dans elle-même préserve les birapports, alors c’est une transformation projective.</p></div>
+<p>Au dix-neuvième siècle, il y eut une réaction contre la géométrie analytique, et certains géomètres jugèrent que le second théorème fondamental, tel qu’il est énoncé ci-dessus, n’était pas assez géométrique. Pour l’améliorer, ils utilisèrent une construction géométrique des quadruplets de points dont le birapport vaut −1. De tels quadruplets sont dits <em>harmoniques</em>. La construction ci-dessous permet d’expérimenter&nbsp;: observez par exemple ce qui se passe lorsque <var>C</var> est le milieu du segment <var>AB</var>.</p>
+</div>
+<!--APPLET harmonic|<b>Le conjugué harmonique.</b> Le point <var>D</var> est construit à partir de <var>A</var>, <var>B</var>, <var>C</var> à l’aide de droites seulement. Déplacez le point auxiliaire au-dessus de la droite, ou les droites en pointillés qui passent par lui&nbsp;: <var>D</var> ne bouge pas, car [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>] = −1.-->
+<div class="prose">
+<div class="statement"><b>Théorème de von Staudt.</b><p>Si une transformation de la droite projective dans elle-même préserve les quadruplets harmoniques, alors c’est une transformation projective.</p></div>
+</div>
+</section>
+
+<section id="duality">
+<h2><span class="n">5</span>Transformations projectives en dimension deux</h2>
+<div class="prose">
+<p>Considérons maintenant des transformations du plan projectif (c’est-à-dire du plan muni de la droite à l’infini) analogues à celles que nous avons déjà considérées sur la droite projective. Les composées de ces transformations seront appelées transformations projectives (du plan projectif).</p>
+</div>
+<figure class="svg"><img src="svg/plane_trans.svg" alt="Deux plans formant un angle&nbsp;; la droite issue de P passant par X rencontre la charnière, et la droite issue de ce point passant par Q rencontre le second plan en T(X)." width="340"><figcaption>Une classe de transformations du plan projectif.</figcaption></figure>
+<div class="prose">
+<p>Comme dans le cas de la dimension un, nous voulons savoir comment les transformations projectives déplacent les points. Puisque ces transformations préservent les droites, on ne peut pas espérer envoyer trois points donnés sur trois points donnés&nbsp;: les trois premiers points pourraient être alignés et les autres non. Cependant, si l’on dit que quatre points sont en <em>position générale</em> lorsque trois d’entre eux ne sont jamais sur une même droite, on a le résultat suivant&nbsp;:</p>
+<div class="statement"><b>Premier théorème fondamental.</b><p>Si deux quadruplets de points <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var> et <var>A′</var>, <var>B′</var>, <var>C′</var>, <var>D′</var> sont en position générale, il existe une unique transformation projective du plan qui envoie <var>A</var> sur <var>A′</var>, <var>B</var> sur <var>B′</var>, <var>C</var> sur <var>C′</var> et <var>D</var> sur <var>D′</var>.</p></div>
+<p>En dimension deux, c’est la propriété d’envoyer les droites sur des droites qui caractérise les transformations projectives du plan.</p>
+<div class="statement"><b>Second théorème fondamental.</b><p>Si une bijection du plan projectif dans lui-même envoie les droites sur des droites, alors c’est une transformation projective.</p></div>
+<h3>Le principe de dualité</h3>
+<p>L’un des aspects les plus intéressants de la géométrie projective en dimension supérieure à un est le principe de dualité. Ce principe affirme que les théorèmes de géométrie projective vont par paires duales&nbsp;: il suffit d’échanger les mots <em>droite</em> et <em>point</em>, et de remplacer l’intersection de deux droites par la droite déterminée par deux points, et réciproquement. Par exemple, le dual du théorème de Desargues est sa réciproque, et le dual du théorème de Pappus est le suivant&nbsp;:</p>
+<div class="statement"><b>Dual du théorème de Pappus.</b><p>Si <var>a</var>, <var>b</var>, <var>c</var> et <var>a′</var>, <var>b′</var>, <var>c′</var> sont deux triplets de droites concourantes, alors les droites (<var>a</var>·<var>b′</var>)(<var>a′</var>·<var>b</var>), (<var>a</var>·<var>c′</var>)(<var>c</var>·<var>a′</var>) et (<var>b</var>·<var>c′</var>)(<var>c</var>·<var>b′</var>) sont concourantes.</p></div>
+</div>
+<!--APPLET pappus_dual|<b>Le dual du théorème de Pappus.</b> Deux faisceaux de trois droites, <var>a</var>, <var>b</var>, <var>c</var> et <var>a′</var>, <var>b′</var>, <var>c′</var>, appariées par couleur. Les trois droites bleues du théorème passent toujours par un même point.-->
+<div class="prose">
+<p>Ce principe «&nbsp;magique&nbsp;» n’est au fond rien d’autre qu’une interprétation géométrique de la dualité des espaces vectoriels.</p>
+</div>
+</section>
+
+<section id="conics">
+<h2><span class="n">6</span>Géométrie projective des coniques</h2>
+<div class="prose">
+<p>Une section conique est, par définition, l’image d’un cercle par une perspectivité dont le centre est le sommet du cône. En déplaçant et en inclinant le plan, on peut obtenir une ellipse, une parabole et une hyperbole, mais aussi un point, une droite et une paire de droites sécantes. Ces dernières sections coniques sont habituellement qualifiées de <em>dégénérées</em>. Puisque les coniques non dégénérées sont toutes équivalentes au cercle par des transformations projectives (et même par des perspectives), on pourrait penser que la géométrie projective des coniques est plutôt ennuyeuse. Bien au contraire&nbsp;: en oubliant les différences entre cercles, ellipses, hyperboles et paraboles, nous pouvons nous concentrer sur leurs propriétés communes et les comprendre plus profondément.</p>
+</div>
+<figure class="svg"><img src="svg/conic_section.svg" alt="Un double cône coupé par deux plans&nbsp;: un cercle et une ellipse sont images l’un de l’autre par perspective depuis le sommet." width="300"><figcaption>Toutes les coniques non dégénérées sont projectivement équivalentes.</figcaption></figure>
+<div class="prose">
+<p>Comme conséquence de l’équivalence projective des coniques, tout résultat de nature projective que l’on peut démontrer pour le cercle sera vrai pour toutes les coniques. Un exemple facile d’un tel résultat est le suivant&nbsp;:</p>
+<div class="statement"><b>Proposition.</b><p>Soient <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var> quatre points d’une conique. Si <var>E</var> et <var>F</var> sont deux points de la même conique, distincts des quatre points précédents, les birapports [<var>EA</var>, <var>EB</var>, <var>EC</var>, <var>ED</var>] et [<var>FA</var>, <var>FB</var>, <var>FC</var>, <var>FD</var>] sont égaux.</p></div>
+<p>Remarquons que le birapport de quatre droites passant par un point <var>X</var> est défini comme le birapport des quatre points obtenus en coupant ces droites par une droite quelconque ne passant pas par <var>X</var>.</p>
+<p>La dualité projective n’échange pas seulement les points et les droites&nbsp;: elle échange l’ensemble des points d’une courbe avec l’ensemble des droites tangentes à cette courbe. Si l’on remplace la conique ponctuelle par la conique tangentielle dans la proposition précédente, on obtient un nouveau résultat&nbsp;:</p>
+<div class="statement"><b>Proposition.</b><p>Soient <var>a</var>, <var>b</var>, <var>c</var>, <var>d</var> quatre droites tangentes à une conique. Si <var>e</var> et <var>f</var> sont deux droites tangentes à la même conique, distinctes des quatre droites précédentes, alors les birapports [<var>e</var>·<var>a</var>, <var>e</var>·<var>b</var>, <var>e</var>·<var>c</var>, <var>e</var>·<var>d</var>] et [<var>f</var>·<var>a</var>, <var>f</var>·<var>b</var>, <var>f</var>·<var>c</var>, <var>f</var>·<var>d</var>] sont égaux.</p></div>
+</div>
+<figure class="svg row">
+  <div><img src="svg/conic_ratio.svg" alt="Six points sur une ellipse&nbsp;; les quatre droites joignant E et F à A, B, C, D." width="320"><figcaption>[<var>EA</var>, <var>EB</var>, <var>EC</var>, <var>ED</var>] = [<var>FA</var>, <var>FB</var>, <var>FC</var>, <var>FD</var>].</figcaption></div>
+  <div><img src="svg/line_ratio.svg" alt="Une ellipse et quatre tangentes a, b, c, d coupées par une cinquième tangente e." width="300"><figcaption>Le birapport [<var>e</var>·<var>a</var>, <var>e</var>·<var>b</var>, <var>e</var>·<var>c</var>, <var>e</var>·<var>d</var>] ne dépend pas de la droite <var>e</var>.</figcaption></div>
+</figure>
+<div class="prose">
+<p>Les réciproques des propositions précédentes sont les théorèmes maîtres de l’étude projective des coniques. On les doit à deux des personnages les plus intéressants de l’histoire des mathématiques&nbsp;: Jacob Steiner et Michel Chasles.</p>
+<div class="statement"><b>Théorème de Steiner.</b><p>Si <var>f</var> est une transformation projective entre le faisceau des droites passant par un point <var>X</var> et le faisceau des droites passant par un point <var>Y</var>, alors le lieu des points {<var>m</var>·<var>f</var>(<var>m</var>) : la droite <var>m</var> passe par <var>X</var>} est une conique ponctuelle.</p></div>
+<div class="statement"><b>Théorème de Chasles.</b><p>Si <var>f</var> est une transformation projective entre l’ensemble des points d’une droite <var>m</var> et l’ensemble des points d’une droite <var>l</var>, alors l’ensemble des droites {<var>X</var><var>f</var>(<var>X</var>) : le point <var>X</var> est sur <var>m</var>} est une conique tangentielle.</p></div>
+<p>Je ne peux résister à la tentation de mentionner un beau résultat de Chasles dont la démonstration dépasse le cadre de ce cours, mais dont l’énoncé est si simple&nbsp;:</p>
+<div class="statement"><b>Théorème.</b><p>Le nombre de coniques tangentes à cinq coniques données en position générale est 3264.</p></div>
+</div>
+</section>
+
+<section id="pascal">
+<h2><span class="n">7</span>Géométrie projective des coniques (suite)</h2>
+<div class="prose">
+<p>Nous poursuivons notre survol de la géométrie projective des coniques en établissant quelques conséquences simples des théorèmes maîtres de Chasles et de Steiner. La première est que cinq points (ou cinq droites) en position générale déterminent une conique. Pour le voir, notons les points <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>, <var>E</var> et considérons la transformation projective <var>f</var> entre le faisceau des droites passant par <var>A</var> et le faisceau des droites passant par <var>B</var> qui envoie <var>AC</var> sur <var>BC</var>, <var>AD</var> sur <var>BD</var> et <var>AE</var> sur <var>BE</var>. D’après le premier théorème fondamental, cette transformation existe et est unique. Remarquons que, d’après le théorème de Steiner, le lieu des points {<var>m</var>·<var>f</var>(<var>m</var>) : la droite <var>m</var> passe par <var>A</var>} est une conique. On vérifie facilement que cette conique passe par les cinq points donnés.</p>
+</div>
+<figure class="svg row">
+  <div><img src="svg/five_points.svg" alt="Cinq points A à E&nbsp;; les droites joignant A et B à C, D, E." width="300"><figcaption>Cinq points en position générale déterminent une conique.</figcaption></div>
+  <!--APPLET-INLINE conic|<b>Essayez.</b> Déplacez n’importe lequel des cinq points&nbsp;: la conique qui passe par eux suit le mouvement.-->
+</figure>
+<div class="prose">
+<p>Une autre conséquence relativement simple du théorème de Steiner est un théorème bien plus ancien, dû à Pascal.</p>
+<div class="statement"><b>Théorème de Pascal.</b><p>Les six sommets d’un hexagone sont sur une conique si et seulement si les trois points obtenus en coupant les trois paires de côtés opposés sont alignés.</p></div>
+</div>
+<!--APPLET pascal|<b>Le théorème de Pascal.</b> Faites glisser <var>X</var> le long de la droite <var>BC</var>. La droite bleue passant par <var>X</var> et <var>AB</var>·<var>DE</var> joue le rôle de la droite de Pascal et produit le sixième sommet <var>F</var> de l’hexagone <var>ABCDEF</var>, qui est toujours sur la conique passant par les cinq autres.-->
+<div class="prose">
+<p>Le théorème de Pascal peut aussi servir à construire une conique dont on connaît cinq points&nbsp;:</p>
+</div>
+<!--APPLET construct|<b>Tracer une conique à la règle.</b> Faites glisser <var>X</var> le long de la droite <var>BC</var>&nbsp;: le point <var>F</var> laisse une trace, et cette trace est la conique passant par <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>, <var>E</var> (en pointillés).-->
+<div class="prose">
+<p>Le dual du théorème de Pascal est le suivant&nbsp;:</p>
+<div class="statement"><b>Théorème de Brianchon.</b><p>Les six côtés d’un hexagone sont tangents à une conique si et seulement si les trois droites qui joignent les trois paires de sommets opposés sont concourantes.</p></div>
+</div>
+<figure class="svg"><img src="svg/brianchon.svg" alt="Un hexagone circonscrit à une ellipse&nbsp;; ses trois grandes diagonales se coupent en un point." width="320"><figcaption>Le théorème de Brianchon est le dual de celui de Pascal.</figcaption></figure>
+<div class="prose">
+<h3>Pôle et polaire</h3>
+<p>Une conique fait du principe de dualité une correspondance concrète&nbsp;: tout point <var>P</var> a une droite <em>polaire</em>, et toute droite est la polaire d’un unique point, son <em>pôle</em>. Lorsque <var>P</var> est à l’extérieur de la conique, sa polaire est la droite qui passe par les deux points de contact des tangentes issues de <var>P</var>. En appliquant cette correspondance à un hexagone inscrit dans une conique, on obtient un hexagone circonscrit, et le théorème de Pascal devient celui de Brianchon.</p>
+</div>
+<figure class="svg row">
+  <!--APPLET-INLINE polarity|<b>La polaire d’un point.</b> Déplacez <var>P</var> à l’intérieur et à l’extérieur de la conique, ou déformez la conique.-->
+  <!--APPLET-INLINE delahire|<b>Le théorème de La Hire.</b> Quand <var>P</var> glisse le long de la droite <var>ℓ</var>, sa polaire passe toujours par <var>L</var>, le pôle de <var>ℓ</var>.-->
+</figure>
+</section>
+
+<section id="conclusion">
+<h2>Conclusion</h2>
+<div class="prose">
+<p>Ici s’achève notre rapide survol de quelques résultats classiques de la géométrie projective. Nous reviendrons plus en détail sur ces résultats tout au long du cours, mais surtout nous verrons comment ils sont liés à d’autres domaines des mathématiques, comme l’algèbre linéaire, la théorie des groupes, l’étude des formes quadratiques, l’analyse complexe, la géométrie hyperbolique et la topologie.</p>
+<h3>Remerciements</h3>
+<p><em>La version originale (2001).</em> Ce cours interactif de géométrie projective a été conçu à l’origine lorsque j’étais au Département de Mathématiques de l’Université Catholique de Louvain, à Louvain-la-Neuve, en Belgique. Pour le préparer, j’ai largement utilisé un grand nombre de logiciels qui sont, pour la plupart, librement disponibles sur internet. C’est d’ailleurs la disponibilité de ces logiciels qui m’a incité à entreprendre cette expérience. Je remercie chaleureusement les développeurs d’Emacs, Linux, TeX, LaTeX, LaTeX2HTML, GIMP, Perl, HTML, XFig et Cinderella (le seul de ces logiciels qui ne soit pas libre) pour les merveilleux outils qu’ils ont créés.</p>
+<p><em>Cette édition (2026).</em> Les applets Java de la version originale ne fonctionnent plus dans les navigateurs actuels. Les constructions ont repris vie grâce à CindyJS, le successeur libre de Cinderella, par la traduction des fichiers Cinderella d’origine&nbsp;; les figures ont été redessinées en MetaPost à partir des sources XFig d’origine&nbsp;; et la page elle-même est en HTML simple. La conversion a été réalisée avec l’aide de Claude, un assistant d’intelligence artificielle conçu par Anthropic. Je remercie les développeurs de CindyJS, MetaPost, LuaTeX et Python.</p>
+<p>J’espère que d’autres géomètres seront eux aussi tentés d’expérimenter avec ces outils et rendront leur travail librement accessible sur internet.</p>
+<h3>Références</h3>
+<p>Pour préparer cette leçon, les textes suivants m’ont été très utiles&nbsp;:</p>
+<!--REFS-->
+</div>
+<p class="note">Cette leçon a été publiée sur le web pour la première fois en 2001, avec des applets Java réalisées dans Cinderella. Dans cette édition, les constructions fonctionnent dans tous les navigateurs&nbsp;: elles ont été traduites en <a href="https://cindyjs.org">CindyJS</a> directement à partir des fichiers Cinderella d’origine, et les figures ont été redessinées en MetaPost à partir des sources XFig d’origine. Dans chaque construction, les <span class="dot drag"></span> points colorés peuvent être déplacés et le <span class="dot res"></span> bleu indique ce que prédit le théorème.</p>
+</section>
+</main>
+<footer class="license"><p>© 2001, 2026 Juan Carlos Álvarez Paiva. Le texte et les figures sont placés sous licence <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">Creative Commons Attribution – Partage dans les mêmes conditions 4.0 International</a> (CC BY-SA 4.0)&nbsp;: vous pouvez les copier, les adapter et les partager, à condition de citer l’auteur et de diffuser toute adaptation sous la même licence. Les scripts de construction sont sous licence <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU GPL v3</a> ou ultérieure. CindyJS est distribué sous licence Apache 2.0. Les reproductions des œuvres de Dürer, Giotto et Raphaël appartiennent au domaine public.</p></footer>

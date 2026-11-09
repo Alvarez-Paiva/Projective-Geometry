@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introduction to Projective Geometry</title>
+<meta name="description" content="Inaugural lecture of an interactive course on projective geometry, with live constructions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one reading column, figures and live constructions wider than the text,
+   section numbers taken from the seven pages of the 2001 lecture. Single light theme. */
+:root {
+  --paper: #f6f7f9;
+  --board: #ffffff;
+  --ink: #20242b;
+  --muted: #5d6570;
+  --rule: #d8dce2;
+  --lapis: #264a94;      /* Giotto's ultramarine: constructed results */
+  --vermilion: #c7402a;  /* draggable points */
+  --display: "EB Garamond", Garamond, "Times New Roman", serif;
+  --body: "Source Serif 4", Georgia, serif;
+  --ui: "Source Sans 3", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.62 var(--body); }
+a { color: var(--lapis); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--lapis); outline-offset: 2px; }
+header.top { max-width: 940px; margin: 0 auto; padding: 48px 20px 12px; display: grid; gap: 6px; }
+.kicker { font: 600 0.8rem/1.2 var(--ui); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 500 clamp(2.2rem, 5vw, 3.3rem)/1.05 var(--display); margin: 0; text-wrap: balance; }
+.byline { font: 1.05rem var(--display); font-style: italic; }
+.affil { font: 0.92rem/1.4 var(--ui); color: var(--muted); }
+nav.toc { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(6px); border-bottom: 1px solid var(--rule); }
+nav.toc ol { max-width: 940px; margin: 0 auto; padding: 8px 20px; list-style: none; display: flex; gap: 4px 18px; flex-wrap: wrap;
+  font: 0.86rem var(--ui); }
+nav.toc a { color: var(--muted); text-decoration: none; }
+nav.toc a:hover { color: var(--ink); }
+nav.toc b { color: var(--lapis); font-weight: 600; margin-right: 4px; }
+main { max-width: 940px; margin: 0 auto; padding: 8px 20px 64px; }
+section { padding-top: 28px; }
+.prose { max-width: 66ch; }
+.prose p { margin: 0 0 1em; }
+h2 { font: 500 1.9rem/1.15 var(--display); margin: 1.4em 0 0.5em; text-wrap: balance; }
+h2 .n { color: var(--lapis); margin-right: 0.35em; font-variant-numeric: oldstyle-nums; }
+h3 { font: 600 1.25rem/1.25 var(--display); margin: 1.2em 0 0.3em; }
+.statement { border-left: 3px solid var(--lapis); padding: 2px 0 2px 16px; margin: 1em 0 1.2em; }
+.statement b { font: 600 1rem var(--display); font-size: 1.12rem; }
+.statement p { margin: 0.2em 0 0; font-style: italic; }
+var, .m { font-style: italic; font-family: var(--body); }
+figure { margin: 1.4em 0 1.8em; }
+figure.art { display: grid; gap: 14px; }
+figure.art .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; align-items: end; }
+figure img { max-width: 100%; height: auto; display: block; border-radius: 3px; }
+figure.svg img { margin: 0 auto; width: min(100%, 400px); height: auto; max-height: 320px; object-fit: contain; }
+figure.svg.row { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; align-items: center; }
+figcaption { font: 0.92rem/1.45 var(--ui); color: var(--muted); margin-top: 8px; max-width: 70ch; }
+figcaption b { color: var(--ink); font-weight: 600; }
+.applet .board { position: relative; background: var(--board); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden;
+  touch-action: none; }
+.applet .board > div { position: absolute; inset: 0; }
+.applet .bar { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; flex-wrap: wrap; }
+.applet button { font: 600 0.82rem var(--ui); color: var(--ink); background: var(--board); border: 1px solid var(--rule);
+  border-radius: 4px; padding: 4px 10px; cursor: pointer; }
+.applet button:hover { border-color: var(--lapis); color: var(--lapis); }
+.dot { display: inline-block; width: 0.62em; height: 0.62em; border-radius: 50%; vertical-align: 0.05em; }
+.dot.drag { background: var(--vermilion); } .dot.res { background: var(--lapis); }
+math { font-size: 1.08em; }
+.formula { text-align: center; margin: 1em 0 1.2em; font-size: 1.15rem; }
+footer.license { max-width: 940px; margin: 48px auto 0; padding: 18px 20px 40px; border-top: 1px solid var(--rule); font: 0.8rem/1.5 var(--ui); color: var(--muted); }
+footer.license p { max-width: 80ch; margin: 0; }
+footer.license a { color: inherit; }
+.note { font: 0.9rem/1.5 var(--ui); color: var(--muted); border-top: 1px solid var(--rule); margin-top: 40px; padding-top: 14px; max-width: 70ch; }
+ol.refs { padding-left: 1.2em; } ol.refs li { margin-bottom: 0.4em; }
+@media (max-width: 600px) { body { font-size: 17px; } header.top { padding-top: 28px; } }
+</style>
+</head>
+<body>
+<!--BODY-->
+
+<script src="https://cdn.jsdelivr.net/npm/cindyjs@0.0.5/build/js/Cindy.js"></script>
+<script>
+"use strict";
+const SPEC = /*SPEC*/null;
+const instances = {};
+function start(name) {
+  const host = document.getElementById("cs-" + name);
+  if (instances[name]) { try { instances[name].shutdown(); } catch (e) {} }
+  host.innerHTML = "";
+  const inner = document.createElement("div");
+  inner.id = "cs-" + name + "-" + Date.now();
+  inner.style.position = "absolute"; inner.style.inset = "0";
+  host.appendChild(inner);
+  const s = JSON.parse(JSON.stringify(SPEC[name]));
+  instances[name] = CindyJS({
+    ports: [{ id: inner.id, fill: "parent", background: "rgb(255,255,255)",
+              transform: [{ visibleRect: s.rect }] }],
+    geometry: s.geometry,
+    defaultAppearance: { textsize: 17, fontFamily: "'Source Serif 4', Georgia, serif",
+                         dimDependent: 1, lineSize: 1.2, pointSize: 4 }
+  });
+}
+function boot() {
+  if (typeof CindyJS !== "function") {
+    document.querySelectorAll(".applet .board").forEach(b => {
+      b.innerHTML = '<p style="padding:1em;font:0.9rem var(--ui);color:var(--muted)">The interactive figure could not load (CindyJS was not reached).</p>';
+    });
+    return;
+  }
+  document.querySelectorAll("[data-applet]").forEach(fig => start(fig.dataset.applet));
+  document.querySelectorAll("[data-reset]").forEach(b => b.addEventListener("click", () => start(b.dataset.reset)));
+}
+if (document.readyState === "complete") boot(); else window.addEventListener("load", boot);
+</script>
+</body>
+</html>

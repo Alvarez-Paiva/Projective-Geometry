@@ -1,0 +1,212 @@
+<header class="top">
+  <!--LANGS-->
+  <div class="kicker">Interactive course on projective geometry · Inaugural lecture</div>
+  <h1>Introduction to Projective Geometry</h1>
+  <div class="byline">Juan Carlos Álvarez Paiva</div>
+  <div class="affil">Laboratoire Paul Painlevé, Université de Lille, France</div>
+</header>
+<nav class="toc" aria-label="Contents">
+  <ol>
+    <li><a href="#perspective"><b>1</b>Perspective</a></li>
+    <li><a href="#infinity"><b>2</b>Infinity and invariants</a></li>
+    <li><a href="#transformations"><b>3</b>Projective transformations</a></li>
+    <li><a href="#cross-ratio"><b>4</b>Cross ratios</a></li>
+    <li><a href="#duality"><b>5</b>The plane and duality</a></li>
+    <li><a href="#conics"><b>6</b>Conics</a></li>
+    <li><a href="#pascal"><b>7</b>Pascal and Brianchon</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+<main>
+
+<section id="perspective">
+<div class="prose">
+<p>Thirty years ago the study of projective geometry would have seemed somewhat like the study of Latin: good for the brain and a means to keep in contact with the ancients. Today, however, projective geometry is a popular subject with mathematicians and computer scientists. This is due to the new applications to computer vision and to the fact that geometry and geometric thinking are again on the upswing. Moreover, computer science has returned the favor by providing powerful tools for the visualization and diffusion of mathematics. Interactive figures, animations, and linked web pages allow us to present mathematics and, most particularly, geometry in a way that was unthinkable thirty years ago.</p>
+<p>In this course, we shall study projective geometry from a modern perspective using modern tools. A lot of effort will be spent in studying general unifying ideas in geometry such as group actions, homogeneous spaces, invariants, duality, compactification, complexification, and metric spaces. It will be an advantage to the student of geometry to be armed with these ideas before he or she tackles other more complex ideas such as connections, fiber bundles, spinors, and twistors. On the other hand these abstract concepts will be illustrated by geometric constructions of great simplicity. These constructions become alive through their presentation as interactive figures. Moreover, as these constructions, and indeed the whole course, are available through the internet, the student can make better use of the allotted class time to ask questions, solve problems, and expand his or her horizons.</p>
+<p>We now turn to a short description of the subject matter of this course. Today we will deal only with the most elementary and visual ideas, but I think it will be enough to give you an idea of what lies beyond.</p>
+</div>
+<h2><span class="n">1</span>Perspective</h2>
+<div class="prose">
+<p>The architects and painters of the Renaissance asked themselves how to represent a three-dimensional object on a two-dimensional surface. Computer scientists today ask how to make a computer recognize that two distinct images represent the same object from different points of view. In answer to the first question, Leone Battista Alberti (1404–1472) proposed the following procedure: interpose a glass screen between yourself and the object, close one eye, and mark on the glass the points that appear to be on the image. The resulting image, although two-dimensional, will give a faithful impression of the three-dimensional object.</p>
+</div>
+<figure class="art">
+  <img src="images/perspective.jpg" alt="Woodcut by Albrecht Dürer: a draughtsman, looking through a sighting device, marks on a framed glass screen the outline of a seated man." width="300" height="265" style="width:min(100%,420px)">
+  <figcaption>This woodcut by Albrecht Dürer illustrates Alberti’s idea.</figcaption>
+</figure>
+<div class="prose">
+<p>Alberti’s method has been described as <em>projection and section</em>: first we draw the sheaf of light rays entering the eye from the object and then we cut with the glass screen. Since we are free to move our eye and the position of the screen, we have many different two-dimensional representations of the three-dimensional object. An interesting problem, raised by Alberti himself, is to recognize the common properties of all these different representations. This question is the same computer scientists ask today.</p>
+</div>
+<figure class="art">
+  <div class="pair">
+    <img src="images/giotto.jpg" alt="Giotto, The Epiphany: the Nativity scene under a wooden shelter whose lines do not converge to a common vanishing point." width="300" height="308">
+    <img src="images/raphael.jpg" alt="Raphael, The School of Athens: philosophers in a vaulted hall drawn in exact central perspective." width="399" height="267">
+  </div>
+  <figcaption>Giotto’s attempts at perspective in <i>The Epiphany</i> (left) and Raphael’s <i>The School of Athens</i> (right). Can you see what’s wrong with Giotto’s perspective?</figcaption>
+</figure>
+</section>
+
+<section id="infinity">
+<h2><span class="n">2</span>Points and lines at infinity</h2>
+<div class="prose">
+<p>The method of projection and section is peculiar in that there are points on one representation that seem to have no image in another. For example, in the following two-dimensional picture, the point <var>B</var> seems to have no image.</p>
+</div>
+<!--APPLET infinity|<b>The point at infinity.</b> The point <var>A</var> on the line <var>l</var> is projected from <var>P</var> to the point <var>A′</var> on <var>m</var>. Drag <var>A</var> towards <var>B</var>: its image runs off along <var>m</var>, and when <var>A</var> reaches <var>B</var> the projecting line is parallel to <var>m</var>.-->
+<div class="prose">
+<p>The classical way of dealing with this difficulty is to decree the image of <var>B</var> to be the point at infinity on the line <var>m</var>. This notion of ideal points can be made rigorous, but we will leave that for future lectures (see chapter two of the course notes). The same phenomenon occurs in the following figure, but there a whole line of points on the source plane has no image on the target plane. The image of this line is said to be the line at infinity on the target plane.</p>
+</div>
+<figure class="svg"><img src="svg/infinity_line.svg" alt="Projection from a point between two planes: the line where the source plane meets the plane through the eye parallel to the target plane has no image." width="320"><figcaption>A whole line of the source plane is sent to infinity.</figcaption></figure>
+<div class="prose">
+<p>The line together with its ideal point at infinity will be termed the <em>projective line</em>, and the plane with its ideal line at infinity will be termed the <em>projective plane</em>.</p>
+<h3>Invariants</h3>
+<p>Whenever we have a class of transformations, in our case those obtained through projection and section, it is interesting to study what properties are or are not preserved by them. The properties that are preserved are called <em>invariants</em> and most of mathematics and physics consists in their study.</p>
+<p>The problem posed by Alberti is to determine the invariants of perspective. It is clear that distances are not preserved, nor angles, nor areas. Parallel lines are not taken to parallel lines. This capacity for distorting images seems to make perspective hard to study. But not all is distorted: lines go to lines and if a point lies on a line, then in any other point of view the corresponding point will lie on the corresponding line. We say that <em>incidence</em> is preserved. This may not seem like much, but it is enough to develop a mathematical theory of great power and beauty.</p>
+<p>The two classical results depending solely on the notion of incidence are the theorems of Pappus and Desargues. Before stating them, let us fix some notation. The line joining two points <var>X</var> and <var>Y</var> is denoted by <var>XY</var> while the point of intersection of the lines <var>a</var> and <var>b</var> is denoted by <var>a</var>·<var>b</var>.</p>
+<div class="statement"><b>Pappus’ theorem.</b><p>If <var>A</var>, <var>B</var>, <var>C</var> and <var>A′</var>, <var>B′</var>, <var>C′</var> are two triples of collinear points, then the points <var>AB′</var>·<var>BA′</var>, <var>AC′</var>·<var>CA′</var>, and <var>BC′</var>·<var>CB′</var> are collinear.</p></div>
+</div>
+<!--APPLET pappus|<b>Pappus’ theorem.</b> Drag <var>A</var>, <var>B</var>, <var>A′</var>, <var>B′</var>, or slide <var>C</var> and <var>C′</var> along their lines. The three points of the theorem stay on a line.-->
+<div class="prose">
+<div class="statement"><b>Desargues’ theorem.</b><p>If two triangles are in perspective, then their corresponding sides intersect in three collinear points.</p></div>
+</div>
+<!--APPLET desargues|<b>Desargues’ theorem.</b> The red and the green triangles are in perspective from the point <var>O</var>. Drag their vertices or <var>O</var>: the three points where corresponding sides meet stay on a line.-->
+</section>
+
+<section id="transformations">
+<h2><span class="n">3</span>Projective transformations</h2>
+<div class="prose">
+<p>In order to study the invariants of perspective in more detail, we simplify the situation by considering a class of transformations from the real line onto itself. These transformations can be described as follows: think of the real line inside the plane, draw a second line <var>m</var> and two points <var>P</var> and <var>Q</var> as in the figure below. If <var>X</var> is a point on the real line, its image <var>T</var>(<var>X</var>) is given by the intersection of the real line with the line passing through the point <var>Q</var> and the intersection of <var>XP</var> and <var>m</var>. If this line is parallel to the real line we say that the image of <var>X</var> is the <em>point at infinity</em>.</p>
+</div>
+<!--APPLET trans|<b>A projective transformation of the line.</b> Slide <var>X</var> along the real line and watch <var>T</var>(<var>X</var>). Move <var>P</var>, <var>Q</var>, or the slanted line <var>m</var> (by its small end points) to obtain other transformations.-->
+<div class="prose">
+<p>By moving the line <var>m</var> or the points <var>P</var> and <var>Q</var> we obtain many different transformations. A toy version of Alberti’s problem is: <em>what are the invariants of this type of transformations?</em></p>
+<p>A preliminary remark that seems almost trivial, but is actually very important, is that any quantity that is invariant under these transformations is invariant under their composition. Let us agree to call all possible transformations that can be obtained by the construction above or by composition of such transformations <em>projective transformations</em>.</p>
+<p>To see how a projective transformation may move things around, we first consider two lines with three points on each. It is not hard to see that by combining two perspectives it is possible to transform the three points on the first line to the three points on the second line. The construction is given by the figure below.</p>
+</div>
+<!--APPLET first|<b>Three points to three points.</b> Two perspectives, centered at the gold points, take the three red points on one line to the three blue points on the other. Drag any of them.-->
+<div class="prose">
+<p>Applying this construction twice to come back to the original line, we see that a projective transformation can take three prescribed points to three prescribed points. In fact, even more is true:</p>
+<div class="statement"><b>First fundamental theorem.</b><p>If <var>A</var>, <var>B</var>, <var>C</var> and <var>A′</var>, <var>B′</var>, <var>C′</var> are two triples of distinct points lying on a line, there is one and only one projective transformation that sends <var>A</var> to <var>A′</var>, <var>B</var> to <var>B′</var>, and <var>C</var> to <var>C′</var>.</p></div>
+<p>The downside of this result is that there can be no invariant of projective transformations involving just three points. Let us now try with four points.</p>
+</div>
+</section>
+
+<section id="cross-ratio">
+<h2><span class="n">4</span>Cross ratios</h2>
+<div class="prose">
+<p>Take four points <var>A</var>, <var>B</var>, <var>C</var> and <var>D</var> on the extended real line (infinity is added as an ideal point). By the first fundamental theorem, there exists one and only one projective transformation <var>T</var> that sends <var>A</var> to infinity, <var>B</var> to zero, and <var>C</var> to one. The number <var>T</var>(<var>D</var>) is the <em>cross ratio</em> of the four points. It is usually denoted by [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>]. It is not hard to see that the cross ratio of four points is invariant under projective transformations. That is to say, that if <var>A</var>, <var>B</var>, <var>C</var> and <var>D</var> are four points and <var>S</var> is a projective transformation, then [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>] = [<var>S</var>(<var>A</var>), <var>S</var>(<var>B</var>), <var>S</var>(<var>C</var>), <var>S</var>(<var>D</var>)].</p>
+<p>We reason thus: if <var>T</var> is the one and only projective transformation that sends <var>A</var> to infinity, <var>B</var> to zero, and <var>C</var> to one, [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>] = <var>T</var>(<var>D</var>). On the other hand if <var>R</var> is the one and only projective transformation that sends <var>S</var>(<var>A</var>) to infinity, <var>S</var>(<var>B</var>) to zero, and <var>S</var>(<var>C</var>) to one, [<var>S</var>(<var>A</var>), <var>S</var>(<var>B</var>), <var>S</var>(<var>C</var>), <var>S</var>(<var>D</var>)] = <var>R</var>(<var>S</var>(<var>D</var>)). Since the composition <var>TS</var><sup>−1</sup> also sends <var>S</var>(<var>A</var>) to infinity, <var>S</var>(<var>B</var>) to zero, and <var>S</var>(<var>C</var>) to one, we have that <var>TS</var><sup>−1</sup> = <var>R</var> and <var>R</var>(<var>S</var>(<var>D</var>)) = <var>T</var>(<var>D</var>).</p>
+<p>Of course, it would be useful to compute cross ratios. It turns out that the formula is quite simple: if <var>x</var><sub>0</sub>, <var>x</var><sub>1</sub>, <var>x</var><sub>2</sub>, and <var>x</var><sub>3</sub> are the coordinates of four points on the extended real line, then</p>
+<div class="formula">
+<math display="block"><mrow><mo>[</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>x</mi><mn>3</mn></msub><mo>]</mo><mo>:=</mo><mfrac><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac><mspace width="0.3em"/><mfrac><mrow><msub><mi>x</mi><mn>3</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><mrow><msub><mi>x</mi><mn>3</mn></msub><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub></mrow></mfrac><mo>.</mo></mrow></math>
+</div>
+<p>Cross ratio is the projective analogue of distance in Euclidean geometry. It is the invariant that defines the geometry:</p>
+<div class="statement"><b>Second fundamental theorem.</b><p>If a transformation from the projective line to itself preserves cross ratios, then it is a projective transformation.</p></div>
+<p>In the nineteenth century there was a backlash against analytic geometry and some geometers decided that the second fundamental theorem as stated above was not geometric enough. To improve it, they made use of a geometric construction for quadruples of points with cross ratio equal to −1. Such quadruples are called <em>harmonic</em>. The construction below lets you experiment: for example, note what happens when <var>C</var> is the midpoint of the segment <var>AB</var>.</p>
+</div>
+<!--APPLET harmonic|<b>The harmonic conjugate.</b> The point <var>D</var> is constructed from <var>A</var>, <var>B</var>, <var>C</var> with lines alone. Move the auxiliary point above the line, or the dashed lines through it: <var>D</var> does not move, because [<var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>] = −1.-->
+<div class="prose">
+<div class="statement"><b>Von Staudt’s theorem.</b><p>If a transformation from the projective line to itself preserves harmonic quadruples, then it is a projective transformation.</p></div>
+</div>
+</section>
+
+<section id="duality">
+<h2><span class="n">5</span>Projective transformations in two dimensions</h2>
+<div class="prose">
+<p>We now consider transformations of the projective plane (i.e., the plane plus the line at infinity) that are analogous to those we already considered on the projective line. Compositions of these transformations will be called projective transformations (of the projective plane).</p>
+</div>
+<figure class="svg"><img src="svg/plane_trans.svg" alt="Two planes at an angle; the line from P through X meets the hinge, and the line from there through Q meets the second plane at T(X)." width="340"><figcaption>A class of transformations on the projective plane.</figcaption></figure>
+<div class="prose">
+<p>Like in the one-dimensional case, we are interested in knowing how projective transformations move points around. Since these transformations preserve lines, we cannot expect that three prescribed points be taken to three prescribed points: the first three points may be collinear and the others not. However, if we say that four points are in <em>general position</em> when no three of them lie on the same line, we have the following result:</p>
+<div class="statement"><b>First fundamental theorem.</b><p>If two quadruples of points <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var> and <var>A′</var>, <var>B′</var>, <var>C′</var>, <var>D′</var> are in general position, there exists a unique projective transformation of the plane that takes <var>A</var> to <var>A′</var>, <var>B</var> to <var>B′</var>, <var>C</var> to <var>C′</var>, and <var>D</var> to <var>D′</var>.</p></div>
+<p>In two dimensions it is the property of taking lines to lines that characterizes projective transformations of the plane.</p>
+<div class="statement"><b>Second fundamental theorem.</b><p>If a bijection from the projective plane to itself sends lines to lines, then it is a projective transformation.</p></div>
+<h3>The principle of duality</h3>
+<p>One of the most interesting aspects of projective geometry in dimensions higher than one is the principle of duality. This principle asserts that theorems in projective geometry come in dual pairs: it suffices to interchange the words <em>line</em> and <em>point</em> and to change the intersection of two lines for the line determined by two points and vice versa. For example, the dual of Desargues’ theorem is its converse and the dual of Pappus’ theorem is as follows:</p>
+<div class="statement"><b>Dual of Pappus’ theorem.</b><p>If <var>a</var>, <var>b</var>, <var>c</var> and <var>a′</var>, <var>b′</var>, <var>c′</var> are two triples of concurrent lines, then the lines (<var>a</var>·<var>b′</var>)(<var>a′</var>·<var>b</var>), (<var>a</var>·<var>c′</var>)(<var>c</var>·<var>a′</var>), and (<var>b</var>·<var>c′</var>)(<var>c</var>·<var>b′</var>) are concurrent.</p></div>
+</div>
+<!--APPLET pappus_dual|<b>The dual of Pappus’ theorem.</b> Two pencils of three lines, <var>a</var>, <var>b</var>, <var>c</var> and <var>a′</var>, <var>b′</var>, <var>c′</var>, matched by color. The three blue lines of the theorem always pass through one point.-->
+<div class="prose">
+<p>This “magic” principle is at heart nothing else than a geometric interpretation of the duality of vector spaces.</p>
+</div>
+</section>
+
+<section id="conics">
+<h2><span class="n">6</span>Projective geometry of conics</h2>
+<div class="prose">
+<p>A conic section is, by definition, the image of a circle under a perspectivity whose center is the vertex of the cone. By moving and tilting the plane, we may obtain an ellipse, a parabola, and a hyperbola, but also a point, a line, and a pair of intersecting lines. These last conic sections are usually termed <em>degenerate</em>. Since the nondegenerate conics are all equivalent to the circle under projective (and even perspective) transformations, we may think that the projective geometry of conics is rather dull. Far from that, by forgetting the differences between circles, ellipses, hyperbolas, and parabolas, we are able to concentrate on their common properties and gain a deeper understanding of them.</p>
+</div>
+<figure class="svg"><img src="svg/conic_section.svg" alt="A double cone cut by two planes: a circle and an ellipse are perspective images of each other from the vertex." width="300"><figcaption>All nondegenerate conics are projectively equivalent.</figcaption></figure>
+<div class="prose">
+<p>As a consequence of the projective equivalence of conics, any result of a projective nature that we can prove for the circle will hold for all conics. An easy example of such a result is the following</p>
+<div class="statement"><b>Proposition.</b><p>Let <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var> be four points on a conic. If <var>E</var> and <var>F</var> are two points on the same conic that are different from the previous four points, the cross ratios [<var>EA</var>, <var>EB</var>, <var>EC</var>, <var>ED</var>] and [<var>FA</var>, <var>FB</var>, <var>FC</var>, <var>FD</var>] are equal.</p></div>
+<p>We remark that the cross ratio of four lines passing through a point <var>X</var> is defined as the cross ratio of the four points obtained by intersecting these lines with an arbitrary line not passing through <var>X</var>.</p>
+<p>Projective duality not only interchanges points and lines, it interchanges the set of points lying on a curve for the set of lines tangent to the curve. If we replace the point conic for the line conic in the previous proposition, we obtain a new result:</p>
+<div class="statement"><b>Proposition.</b><p>Let <var>a</var>, <var>b</var>, <var>c</var>, <var>d</var> be four lines tangent to a conic. If <var>e</var> and <var>f</var> are two lines tangent to the same conic that are different from the previous four lines, then the cross ratios [<var>e</var>·<var>a</var>, <var>e</var>·<var>b</var>, <var>e</var>·<var>c</var>, <var>e</var>·<var>d</var>] and [<var>f</var>·<var>a</var>, <var>f</var>·<var>b</var>, <var>f</var>·<var>c</var>, <var>f</var>·<var>d</var>] are equal.</p></div>
+</div>
+<figure class="svg row">
+  <div><img src="svg/conic_ratio.svg" alt="Six points on an ellipse; the four lines from E and from F to A, B, C, D." width="320"><figcaption>[<var>EA</var>, <var>EB</var>, <var>EC</var>, <var>ED</var>] = [<var>FA</var>, <var>FB</var>, <var>FC</var>, <var>FD</var>].</figcaption></div>
+  <div><img src="svg/line_ratio.svg" alt="An ellipse with four tangent lines a, b, c, d cut by a fifth tangent e." width="300"><figcaption>The cross ratio [<var>e</var>·<var>a</var>, <var>e</var>·<var>b</var>, <var>e</var>·<var>c</var>, <var>e</var>·<var>d</var>] is independent of the line <var>e</var>.</figcaption></div>
+</figure>
+<div class="prose">
+<p>The converses of the previous propositions are the master theorems in the projective study of conics. They are due to two of the most interesting characters in the history of mathematics: Jacob Steiner and Michel Chasles.</p>
+<div class="statement"><b>Steiner’s theorem.</b><p>If <var>f</var> is a projective transformation between the pencil of lines passing through a point <var>X</var> and the pencil of lines passing through a point <var>Y</var>, then the locus of points {<var>m</var>·<var>f</var>(<var>m</var>) : the line <var>m</var> passes through <var>X</var>} is a point conic.</p></div>
+<div class="statement"><b>Chasles’ theorem.</b><p>If <var>f</var> is a projective transformation between the set of points lying on a line <var>m</var> and the set of points lying on a line <var>l</var>, then the set of lines {<var>X</var><var>f</var>(<var>X</var>) : the point <var>X</var> lies on <var>m</var>} is a line conic.</p></div>
+<p>I cannot resist the temptation of mentioning a beautiful result of Chasles whose proof lies beyond the scope of this course, but whose statement is so very simple:</p>
+<div class="statement"><b>Theorem.</b><p>The number of conics tangent to five prescribed conics in general position is 3264.</p></div>
+</div>
+</section>
+
+<section id="pascal">
+<h2><span class="n">7</span>Projective geometry of conics (continued)</h2>
+<div class="prose">
+<p>We continue our survey of the projective geometry of conics by establishing some simple consequences of the master theorems of Chasles and Steiner. The first is that five points (or five lines) in general position determine a conic. To see this, denote the points by <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>, <var>E</var> and consider the projective transformation <var>f</var> between the pencil of lines passing through <var>A</var> and the pencil of lines passing through <var>B</var> that takes <var>AC</var> to <var>BC</var>, <var>AD</var> to <var>BD</var>, and <var>AE</var> to <var>BE</var>. By the first fundamental theorem this transformation exists and is unique. Notice that by Steiner’s theorem the locus of points {<var>m</var>·<var>f</var>(<var>m</var>) : the line <var>m</var> passes through <var>A</var>} is a conic. It is easily verified that this conic passes through the five prescribed points.</p>
+</div>
+<figure class="svg row">
+  <div><img src="svg/five_points.svg" alt="Five points A to E; the lines from A and from B to C, D, E." width="300"><figcaption>Five points in general position determine a conic.</figcaption></div>
+  <!--APPLET-INLINE conic|<b>Try it.</b> Drag any of the five points: the conic through them follows.-->
+</figure>
+<div class="prose">
+<p>Another relatively simple consequence of Steiner’s theorem is a much earlier theorem of Pascal.</p>
+<div class="statement"><b>Pascal’s theorem.</b><p>The six vertices of a hexagon lie on a conic if and only if the three points obtained by intersecting the three pairs of opposite sides are collinear.</p></div>
+</div>
+<!--APPLET pascal|<b>Pascal’s theorem.</b> Slide <var>X</var> along the line <var>BC</var>. The blue line through <var>X</var> and <var>AB</var>·<var>DE</var> plays the role of the Pascal line and produces the sixth vertex <var>F</var> of the hexagon <var>ABCDEF</var>, which always lies on the conic through the other five.-->
+<div class="prose">
+<p>Pascal’s theorem can also be used as a way of constructing a conic when five of its points are given:</p>
+</div>
+<!--APPLET construct|<b>Drawing a conic with a ruler.</b> Slide <var>X</var> along the line <var>BC</var>: the point <var>F</var> leaves a trace, and the trace is the conic through <var>A</var>, <var>B</var>, <var>C</var>, <var>D</var>, <var>E</var> (dashed).-->
+<div class="prose">
+<p>The dual of Pascal’s theorem is as follows:</p>
+<div class="statement"><b>Brianchon’s theorem.</b><p>The six sides of a hexagon are tangent to a conic if and only if the three lines obtained by joining the three pairs of opposite vertices are concurrent.</p></div>
+</div>
+<figure class="svg"><img src="svg/brianchon.svg" alt="A hexagon circumscribed about an ellipse; its three main diagonals meet at one point." width="320"><figcaption>Brianchon’s theorem is the dual of Pascal’s.</figcaption></figure>
+<div class="prose">
+<h3>Pole and polar</h3>
+<p>A conic turns the principle of duality into a concrete correspondence: every point <var>P</var> has a <em>polar</em> line, and every line is the polar of a unique point, its <em>pole</em>. When <var>P</var> lies outside the conic, its polar is the line through the two points where the tangents from <var>P</var> touch the conic. Applying this correspondence to a hexagon inscribed in a conic produces a hexagon circumscribed about it, and Pascal’s theorem becomes Brianchon’s.</p>
+</div>
+<figure class="svg row">
+  <!--APPLET-INLINE polarity|<b>The polar of a point.</b> Drag <var>P</var> inside and outside the conic, or reshape the conic.-->
+  <!--APPLET-INLINE delahire|<b>La Hire’s theorem.</b> As <var>P</var> slides along the line <var>ℓ</var>, its polar always passes through <var>L</var>, the pole of <var>ℓ</var>.-->
+</figure>
+</section>
+
+<section id="conclusion">
+<h2>Conclusion</h2>
+<div class="prose">
+<p>Here ends our rapid survey of some of the classical results of projective geometry. We will elaborate further on these results throughout the course, but more importantly we shall see how they relate to other domains of mathematics such as linear algebra, group theory, the study of quadratic forms, complex analysis, hyperbolic geometry, and topology.</p>
+<h3>Acknowledgments</h3>
+<p><em>The original version (2001).</em> This interactive course on projective geometry was originally developed while I was at the Département de Mathématiques, Université Catholique de Louvain, Louvain-la-Neuve, Belgium. In preparing it, I made extensive use of a great quantity of software that is, for the most part, freely available through the internet. Indeed, it was the availability of this software that prompted me to undertake this experiment. I warmly thank the developers of Emacs, Linux, TeX, LaTeX, LaTeX2HTML, GIMP, Perl, HTML, XFig, and Cinderella (the only package that is not free) for the wonderful tools they have created.</p>
+<p><em>This edition (2026).</em> The Java applets of the original version no longer run in today’s browsers. The constructions were brought back to life with CindyJS, the open-source successor of Cinderella, by translating the original Cinderella files; the diagrams were redrawn in MetaPost from the original XFig sources; and the page itself is plain HTML. The conversion was carried out with the help of Claude, an AI assistant made by Anthropic. I thank the developers of CindyJS, MetaPost, LuaTeX, and Python.</p>
+<p>I hope that other geometers will also be tempted to experiment with these tools and will make their work freely accessible through the internet.</p>
+<h3>References</h3>
+<p>In preparing this lecture, I found the following texts very helpful:</p>
+<ol class="refs">
+  <li>M. Chasles, <i>Traité des Sections Coniques</i>, Gauthier-Villars, Paris, 1865.</li>
+  <li>F. Klein, <i>Vorlesungen über Höhere Geometrie</i>, 3rd ed., Chelsea Publishing Company, New York, 1957.</li>
+  <li>M. Kline, <i>Mathematical Thought from Ancient to Modern Times</i>, Oxford University Press, New York, 1972.</li>
+  <li>M. Kline, Projective geometry, in <i>Mathematics: An Introduction to its Spirit and Use</i>, M. Kline (ed.), Scientific American, 1979.</li>
+  <li>J.-V. Poncelet, <i>Traité des Propriétés Projectives des Figures</i>, Gauthier-Villars, Paris, 1866.</li>
+</ol>
+</div>
+<p class="note">This lecture was first published on the web in 2001, with Java applets made in Cinderella. In this edition the constructions run in any browser: they were translated to <a href="https://cindyjs.org">CindyJS</a> directly from the original Cinderella files, and the diagrams were redrawn in MetaPost from the original XFig sources. In every construction, <span class="dot drag"></span> colored points can be dragged and <span class="dot res"></span> blue marks what the theorem predicts.</p>
+</section>
+</main>
+<footer class="license"><p>© 2001, 2026 Juan Carlos Álvarez Paiva. Text and figures are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> (CC BY-SA 4.0): you may copy, adapt and share them, provided you credit the author and release any adaptation under the same license. The build scripts are licensed under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU GPL v3</a> or later. CindyJS is distributed under the Apache License 2.0. The reproductions of works by Dürer, Giotto and Raphael are in the public domain.</p></footer>

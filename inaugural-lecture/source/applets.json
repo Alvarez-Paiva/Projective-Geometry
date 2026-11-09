@@ -1,0 +1,2151 @@
+{
+ "conic": {
+  "rect": [
+   -8.64,
+   7.88,
+   12.0,
+   -2.76
+  ],
+  "aspect": 1.9398496240601504,
+  "geometry": [
+   {
+    "name": "A",
+    "type": "Free",
+    "pos": [
+     1.638095238095238,
+     -4.0,
+     -0.9523809523809524
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "B",
+    "type": "Free",
+    "pos": [
+     -3.008849557522124,
+     -4.0,
+     -0.8849557522123895
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "C",
+    "type": "Free",
+    "pos": [
+     4.0,
+     1.04,
+     1.0
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "D",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -2.4,
+     3.3333333333333335
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "E",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -0.48,
+     -1.0
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "C0",
+    "type": "ConicBy5",
+    "args": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   }
+  ]
+ },
+ "construct": {
+  "rect": [
+   -6.16,
+   5.76,
+   15.48,
+   -4.2
+  ],
+  "aspect": 2.1726907630522088,
+  "geometry": [
+   {
+    "name": "A",
+    "type": "Free",
+    "pos": [
+     2.2857142857142856,
+     -4.0,
+     -0.9523809523809524
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "B",
+    "type": "Free",
+    "pos": [
+     4.0,
+     1.6448598130841123,
+     0.9345794392523364
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "C",
+    "type": "Free",
+    "pos": [
+     4.0,
+     3.9523809523809526,
+     1.1904761904761907
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "D",
+    "type": "Free",
+    "pos": [
+     4.0,
+     0.6984126984126984,
+     1.5873015873015872
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "E",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -0.7741935483870966,
+     -1.6129032258064515
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "a",
+    "type": "Join",
+    "args": [
+     "A",
+     "B"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "b",
+    "type": "Join",
+    "args": [
+     "E",
+     "D"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "G",
+    "type": "Meet",
+    "args": [
+     "a",
+     "b"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "c",
+    "type": "Join",
+    "args": [
+     "C",
+     "B"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "H",
+    "type": "PointOnLine",
+    "pos": [
+     4.0,
+     -3.1152498925498273,
+     0.40669842078762686
+    ],
+    "args": [
+     "c"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "d",
+    "type": "Join",
+    "args": [
+     "E",
+     "H"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "e",
+    "type": "Join",
+    "args": [
+     "H",
+     "G"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "f",
+    "type": "Join",
+    "args": [
+     "C",
+     "D"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "K",
+    "type": "Meet",
+    "args": [
+     "e",
+     "f"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "g",
+    "type": "Join",
+    "args": [
+     "A",
+     "K"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "F",
+    "type": "Meet",
+    "args": [
+     "d",
+     "g"
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "C0",
+    "type": "ConicBy5",
+    "args": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E"
+    ],
+    "locus": true,
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   }
+  ]
+ },
+ "delahire": {
+  "rect": [
+   -7.56,
+   6.44,
+   11.0,
+   -2.2
+  ],
+  "aspect": 2.1481481481481484,
+  "geometry": [
+   {
+    "name": "A",
+    "type": "Free",
+    "pos": [
+     2.7184466019417477,
+     -4.0,
+     -0.970873786407767
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "B",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -2.666666666666667,
+     -0.9803921568627452
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "C",
+    "type": "Free",
+    "pos": [
+     4.0,
+     0.7719298245614035,
+     -1.7543859649122808
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "D",
+    "type": "Free",
+    "pos": [
+     4.0,
+     0.41379310344827586,
+     3.4482758620689653
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "E",
+    "type": "Free",
+    "pos": [
+     -1.4545454545454546,
+     -4.0,
+     -1.1363636363636365
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "C0",
+    "type": "ConicBy5",
+    "args": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E"
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "F",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -0.2137404580152672,
+     0.7633587786259541
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "G",
+    "type": "Free",
+    "pos": [
+     -3.5135135135135136,
+     -4.0,
+     -0.6756756756756757
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "a",
+    "type": "Join",
+    "args": [
+     "F",
+     "G"
+    ],
+    "color": "blue",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "H",
+    "type": "PointOnLine",
+    "pos": [
+     4.0,
+     3.836810714525562,
+     0.7683476336517459
+    ],
+    "args": [
+     "a"
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "b",
+    "type": "PolarOfPoint",
+    "args": [
+     "H",
+     "C0"
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "K",
+    "type": "PolarOfLine",
+    "args": [
+     "a",
+     "C0"
+    ],
+    "color": "blue",
+    "size": 5,
+    "labeled": false
+   }
+  ]
+ },
+ "desargues": {
+  "rect": [
+   -6.12,
+   5.8,
+   12.32,
+   -2.92
+  ],
+  "aspect": 2.114678899082569,
+  "geometry": [
+   {
+    "name": "A",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -1.2058823529411762,
+     -0.7352941176470588
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "B",
+    "type": "Free",
+    "pos": [
+     2.3561643835616444,
+     -4.0,
+     -1.3698630136986303
+    ],
+    "color": "red",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "a",
+    "type": "Join",
+    "args": [
+     "A",
+     "B"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "C",
+    "type": "Free",
+    "pos": [
+     4.0,
+     0.7682119205298013,
+     0.6622516556291391
+    ],
+    "color": "red",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "b",
+    "type": "Join",
+    "args": [
+     "A",
+     "C"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "D",
+    "type": "Free",
+    "pos": [
+     4.0,
+     0.14035087719298245,
+     -1.7543859649122808
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "c",
+    "type": "Join",
+    "args": [
+     "A",
+     "D"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "E",
+    "type": "PointOnLine",
+    "pos": [
+     -2.8429923909453882,
+     -4.0,
+     -0.8604538992337647
+    ],
+    "args": [
+     "a"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "F",
+    "type": "PointOnLine",
+    "pos": [
+     4.0,
+     -2.1005294908662964,
+     -1.3686530929418523
+    ],
+    "args": [
+     "b"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "G",
+    "type": "PointOnLine",
+    "pos": [
+     4.0,
+     1.8033392625863114,
+     -3.013259886396307
+    ],
+    "args": [
+     "c"
+    ],
+    "color": "red",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "d",
+    "type": "Join",
+    "args": [
+     "B",
+     "C"
+    ],
+    "color": "red",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "e",
+    "type": "Join",
+    "args": [
+     "C",
+     "G"
+    ],
+    "color": "red",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "f",
+    "type": "Join",
+    "args": [
+     "B",
+     "G"
+    ],
+    "color": "red",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "g",
+    "type": "Join",
+    "args": [
+     "E",
+     "F"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "h",
+    "type": "Join",
+    "args": [
+     "D",
+     "E"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "k",
+    "type": "Join",
+    "args": [
+     "D",
+     "F"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "H",
+    "type": "Meet",
+    "args": [
+     "d",
+     "g"
+    ],
+    "color": "ink",
+    "size": 2,
+    "labeled": false
+   },
+   {
+    "name": "K",
+    "type": "Meet",
+    "args": [
+     "f",
+     "h"
+    ],
+    "color": "ink",
+    "size": 2,
+    "labeled": false
+   },
+   {
+    "name": "L",
+    "type": "Meet",
+    "args": [
+     "e",
+     "k"
+    ],
+    "color": "ink",
+    "size": 2,
+    "labeled": false
+   },
+   {
+    "name": "l",
+    "type": "Join",
+    "args": [
+     "K",
+     "L"
+    ],
+    "color": "ink",
+    "size": 2,
+    "labeled": false
+   }
+  ]
+ },
+ "first": {
+  "rect": [
+   -7.2,
+   6.64,
+   14.44,
+   -3.32
+  ],
+  "aspect": 2.1726907630522088,
+  "geometry": [
+   {
+    "name": "A",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -3.5675675675675675,
+     -1.3513513513513513
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "B",
+    "type": "Free",
+    "pos": [
+     -3.3103448275862064,
+     -4.0,
+     -1.1494252873563218
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "C",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -1.1153846153846152,
+     -0.9615384615384615
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "D",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -3.235294117647059,
+     1.4705882352941175
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "a",
+    "type": "Join",
+    "args": [
+     "A",
+     "B"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "b",
+    "type": "Join",
+    "args": [
+     "C",
+     "D"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "E",
+    "type": "PointOnLine",
+    "pos": [
+     1.760862010367029,
+     -4.0,
+     -1.3873505411476936
+    ],
+    "args": [
+     "a"
+    ],
+    "color": "red",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "F",
+    "type": "PointOnLine",
+    "pos": [
+     -0.4510106329358827,
+     -4.0,
+     -1.2835763554699429
+    ],
+    "args": [
+     "a"
+    ],
+    "color": "red",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "G",
+    "type": "PointOnLine",
+    "pos": [
+     4.0,
+     3.6958561767307794,
+     1.0178619343223723
+    ],
+    "args": [
+     "a"
+    ],
+    "color": "red",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "H",
+    "type": "PointOnLine",
+    "pos": [
+     4.0,
+     0.4104932788535568,
+     -2.712145437318647
+    ],
+    "args": [
+     "b"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "K",
+    "type": "PointOnLine",
+    "pos": [
+     -1.9297761165397465,
+     -2.5440628268061714,
+     4.0
+    ],
+    "args": [
+     "b"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "L",
+    "type": "PointOnLine",
+    "pos": [
+     2.5907820463637856,
+     -4.0,
+     3.1375020551323507
+    ],
+    "args": [
+     "b"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "c",
+    "type": "Join",
+    "args": [
+     "H",
+     "E"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "M",
+    "type": "PointOnLine",
+    "pos": [
+     0.783546289054134,
+     -4.0,
+     -0.7200547400221013
+    ],
+    "args": [
+     "c"
+    ],
+    "color": "gold",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "d",
+    "type": "Join",
+    "args": [
+     "M",
+     "F"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "e",
+    "type": "Join",
+    "args": [
+     "M",
+     "G"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "N",
+    "type": "PointOnLine",
+    "pos": [
+     -3.563509624286535,
+     -4.0,
+     2.2480466574808475
+    ],
+    "args": [
+     "c"
+    ],
+    "color": "gold",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "f",
+    "type": "Join",
+    "args": [
+     "N",
+     "K"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "g",
+    "type": "Join",
+    "args": [
+     "N",
+     "L"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "O",
+    "type": "Meet",
+    "args": [
+     "d",
+     "f"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "P",
+    "type": "Meet",
+    "args": [
+     "e",
+     "g"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "h",
+    "type": "Join",
+    "args": [
+     "P",
+     "O"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "Q",
+    "type": "Meet",
+    "args": [
+     "c",
+     "h"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   }
+  ]
+ },
+ "harmonic": {
+  "rect": [
+   -8.28,
+   8.08,
+   12.04,
+   -0.12
+  ],
+  "aspect": 2.478048780487805,
+  "geometry": [
+   {
+    "name": "U",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -0.8181818181818182,
+     -0.7575757575757576
+    ],
+    "color": "blue",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "V",
+    "type": "Free",
+    "pos": [
+     4.0,
+     0.45188284518828453,
+     0.41841004184100417
+    ],
+    "color": "blue",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "a",
+    "type": "Join",
+    "args": [
+     "U",
+     "V"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "A",
+    "type": "PointOnLine",
+    "pos": [
+     4.0,
+     -0.9999999999999999,
+     -0.9259259259259258
+    ],
+    "args": [
+     "a"
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "C",
+    "type": "PointOnLine",
+    "pos": [
+     4.0,
+     -3.272727272727272,
+     -3.03030303030303
+    ],
+    "args": [
+     "a"
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "B",
+    "type": "PointOnLine",
+    "pos": [
+     -0.7407407407407409,
+     -4.0,
+     -3.703703703703704
+    ],
+    "args": [
+     "a"
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "F",
+    "type": "Free",
+    "pos": [
+     0.5185185185185184,
+     -4.0,
+     -0.6172839506172839
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "b",
+    "type": "Join",
+    "args": [
+     "F",
+     "A"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "c",
+    "type": "Join",
+    "args": [
+     "F",
+     "C"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "d",
+    "type": "Join",
+    "args": [
+     "F",
+     "B"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "G",
+    "type": "PointOnLine",
+    "pos": [
+     1.4098820600162325,
+     -4.0,
+     -0.7949880059397948
+    ],
+    "args": [
+     "b"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "e",
+    "type": "Join",
+    "args": [
+     "G",
+     "B"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "H",
+    "type": "Meet",
+    "args": [
+     "c",
+     "e"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "f",
+    "type": "Join",
+    "args": [
+     "A",
+     "H"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "K",
+    "type": "Meet",
+    "args": [
+     "d",
+     "f"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "g",
+    "type": "Join",
+    "args": [
+     "G",
+     "K"
+    ],
+    "color": "blue",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "D",
+    "type": "Meet",
+    "args": [
+     "a",
+     "g"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": true
+   }
+  ]
+ },
+ "pappus": {
+  "rect": [
+   -6.12,
+   5.8,
+   12.32,
+   -2.92
+  ],
+  "aspect": 2.114678899082569,
+  "geometry": [
+   {
+    "name": "A",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -3.0825688073394493,
+     -0.9174311926605504
+    ],
+    "color": "gold",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "B",
+    "type": "Free",
+    "pos": [
+     -0.5048543689320389,
+     -4.0,
+     -0.970873786407767
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "a",
+    "type": "Join",
+    "args": [
+     "A",
+     "B"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "C",
+    "type": "PointOnLine",
+    "pos": [
+     4.0,
+     3.5421672507997757,
+     0.7227542913336567
+    ],
+    "args": [
+     "a"
+    ],
+    "color": "red",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "D",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -0.1951219512195122,
+     -1.2195121951219514
+    ],
+    "color": "gold",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "E",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -1.254901960784314,
+     1.9607843137254903
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "b",
+    "type": "Join",
+    "args": [
+     "D",
+     "E"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "F",
+    "type": "PointOnLine",
+    "pos": [
+     4.0,
+     -0.825286548758381,
+     0.6715503381061517
+    ],
+    "args": [
+     "b"
+    ],
+    "color": "red",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "c",
+    "type": "Join",
+    "args": [
+     "A",
+     "E"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "d",
+    "type": "Join",
+    "args": [
+     "A",
+     "F"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "e",
+    "type": "Join",
+    "args": [
+     "B",
+     "D"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "f",
+    "type": "Join",
+    "args": [
+     "B",
+     "F"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "g",
+    "type": "Join",
+    "args": [
+     "C",
+     "E"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "h",
+    "type": "Join",
+    "args": [
+     "C",
+     "D"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "G",
+    "type": "Meet",
+    "args": [
+     "d",
+     "h"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "H",
+    "type": "Meet",
+    "args": [
+     "f",
+     "g"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "K",
+    "type": "Meet",
+    "args": [
+     "c",
+     "e"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "k",
+    "type": "Join",
+    "args": [
+     "G",
+     "K"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   }
+  ]
+ },
+ "pappus_dual": {
+  "rect": [
+   -6.12,
+   5.8,
+   12.32,
+   -2.92
+  ],
+  "aspect": 2.114678899082569,
+  "geometry": [
+   {
+    "name": "A",
+    "type": "Free",
+    "pos": [
+     1.2100840336134453,
+     -4.0,
+     -0.8403361344537815
+    ],
+    "color": "red",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "B",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -2.1333333333333333,
+     -1.6666666666666667
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "a",
+    "type": "Join",
+    "args": [
+     "A",
+     "B"
+    ],
+    "color": "gold",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "C",
+    "type": "Free",
+    "pos": [
+     0.64,
+     -1.6,
+     4.0
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "b",
+    "type": "Join",
+    "args": [
+     "A",
+     "C"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "D",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -1.4117647058823528,
+     1.4705882352941175
+    ],
+    "color": "red",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "c",
+    "type": "Join",
+    "args": [
+     "A",
+     "D"
+    ],
+    "color": "red",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "E",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -0.8128342245989304,
+     0.53475935828877
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "F",
+    "type": "PointOnLine",
+    "pos": [
+     1.1930993987142988,
+     -4.0,
+     -1.3125382685033358
+    ],
+    "args": [
+     "b"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "d",
+    "type": "Join",
+    "args": [
+     "E",
+     "F"
+    ],
+    "color": "gold",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "e",
+    "type": "Join",
+    "args": [
+     "E",
+     "B"
+    ],
+    "color": "blue",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "f",
+    "type": "Join",
+    "args": [
+     "E",
+     "C"
+    ],
+    "color": "red",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "g",
+    "type": "Join",
+    "args": [
+     "B",
+     "F"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "G",
+    "type": "Meet",
+    "args": [
+     "c",
+     "d"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "H",
+    "type": "Meet",
+    "args": [
+     "a",
+     "f"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "h",
+    "type": "Join",
+    "args": [
+     "G",
+     "H"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "K",
+    "type": "Meet",
+    "args": [
+     "c",
+     "e"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "k",
+    "type": "Join",
+    "args": [
+     "C",
+     "K"
+    ],
+    "color": "ink",
+    "size": 4,
+    "labeled": false
+   },
+   {
+    "name": "L",
+    "type": "Meet",
+    "args": [
+     "h",
+     "k"
+    ],
+    "color": "ink",
+    "size": 2,
+    "labeled": false
+   }
+  ]
+ },
+ "pascal": {
+  "rect": [
+   -8.64,
+   7.88,
+   12.0,
+   -2.76
+  ],
+  "aspect": 1.9398496240601504,
+  "geometry": [
+   {
+    "name": "A",
+    "type": "Free",
+    "pos": [
+     1.8666666666666665,
+     -4.0,
+     -0.9523809523809524
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "B",
+    "type": "Free",
+    "pos": [
+     4.0,
+     1.6448598130841123,
+     0.9345794392523364
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "C",
+    "type": "Free",
+    "pos": [
+     4.0,
+     3.959183673469388,
+     1.0204081632653061
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "D",
+    "type": "Free",
+    "pos": [
+     4.0,
+     0.6984126984126984,
+     1.5873015873015872
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "E",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -0.7741935483870966,
+     -1.6129032258064515
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "C0",
+    "type": "ConicBy5",
+    "args": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "a",
+    "type": "Join",
+    "args": [
+     "A",
+     "B"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "b",
+    "type": "Join",
+    "args": [
+     "E",
+     "D"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "G",
+    "type": "Meet",
+    "args": [
+     "a",
+     "b"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "c",
+    "type": "Join",
+    "args": [
+     "C",
+     "B"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "H",
+    "type": "PointOnLine",
+    "pos": [
+     -2.4953193213643554,
+     -4.0,
+     -0.6933077469602392
+    ],
+    "args": [
+     "c"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "d",
+    "type": "Join",
+    "args": [
+     "E",
+     "H"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "e",
+    "type": "Join",
+    "args": [
+     "H",
+     "G"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "f",
+    "type": "Join",
+    "args": [
+     "C",
+     "D"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "K",
+    "type": "Meet",
+    "args": [
+     "e",
+     "f"
+    ],
+    "color": "ink",
+    "size": 3,
+    "labeled": false
+   },
+   {
+    "name": "g",
+    "type": "Join",
+    "args": [
+     "A",
+     "K"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "F",
+    "type": "Meet",
+    "args": [
+     "d",
+     "g"
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": true
+   }
+  ]
+ },
+ "polarity": {
+  "rect": [
+   -6.88,
+   7.08,
+   13.76,
+   -3.56
+  ],
+  "aspect": 1.9398496240601504,
+  "geometry": [
+   {
+    "name": "A",
+    "type": "Free",
+    "pos": [
+     -0.3333333333333333,
+     -4.0,
+     -0.8333333333333334
+    ],
+    "color": "ink",
+    "size": 1,
+    "labeled": false
+   },
+   {
+    "name": "B",
+    "type": "Free",
+    "pos": [
+     -3.820895522388059,
+     -4.0,
+     -1.4925373134328357
+    ],
+    "color": "ink",
+    "size": 1,
+    "labeled": false
+   },
+   {
+    "name": "C",
+    "type": "Free",
+    "pos": [
+     4.0,
+     0.7878787878787878,
+     1.5151515151515151
+    ],
+    "color": "ink",
+    "size": 1,
+    "labeled": false
+   },
+   {
+    "name": "D",
+    "type": "Free",
+    "pos": [
+     0.16,
+     -2.24,
+     4.0
+    ],
+    "color": "ink",
+    "size": 1,
+    "labeled": false
+   },
+   {
+    "name": "E",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -3.52,
+     -2.0
+    ],
+    "color": "ink",
+    "size": 1,
+    "labeled": false
+   },
+   {
+    "name": "C0",
+    "type": "ConicBy5",
+    "args": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "F",
+    "type": "Free",
+    "pos": [
+     1.6811594202898552,
+     -4.0,
+     -1.4492753623188408
+    ],
+    "color": "blue",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "a",
+    "type": "PolarOfPoint",
+    "args": [
+     "F",
+     "C0"
+    ],
+    "color": "blue",
+    "size": 5,
+    "labeled": false
+   }
+  ]
+ },
+ "trans": {
+  "rect": [
+   -8.28,
+   7.6,
+   9.92,
+   -0.44
+  ],
+  "aspect": 2.263681592039801,
+  "geometry": [
+   {
+    "name": "A",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -1.0337078651685394,
+     -0.5617977528089888
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "B",
+    "type": "Free",
+    "pos": [
+     4.0,
+     0.9019607843137255,
+     0.4901960784313726
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "a",
+    "type": "Join",
+    "args": [
+     "A",
+     "B"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "C",
+    "type": "Free",
+    "pos": [
+     0.5555555555555556,
+     -4.0,
+     -0.6944444444444444
+    ],
+    "color": "red",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "D",
+    "type": "Free",
+    "pos": [
+     2.619718309859155,
+     -4.0,
+     -0.704225352112676
+    ],
+    "color": "blue",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "E",
+    "type": "Free",
+    "pos": [
+     4.0,
+     -0.45783132530120485,
+     -0.6024096385542169
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "F",
+    "type": "Free",
+    "pos": [
+     -1.9880239520958083,
+     -4.0,
+     -0.5988023952095808
+    ],
+    "color": "ink",
+    "size": 0,
+    "labeled": false
+   },
+   {
+    "name": "b",
+    "type": "Join",
+    "args": [
+     "E",
+     "F"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "X",
+    "type": "PointOnLine",
+    "pos": [
+     4.0,
+     -2.5915492957746475,
+     -1.4084507042253518
+    ],
+    "args": [
+     "a"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": true
+   },
+   {
+    "name": "c",
+    "type": "Join",
+    "args": [
+     "C",
+     "X"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "H",
+    "type": "Meet",
+    "args": [
+     "b",
+     "c"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "d",
+    "type": "Join",
+    "args": [
+     "D",
+     "H"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": false
+   },
+   {
+    "name": "T(X)",
+    "type": "Meet",
+    "args": [
+     "a",
+     "d"
+    ],
+    "color": "ink",
+    "size": 5,
+    "labeled": true
+   }
+  ]
+ }
+}

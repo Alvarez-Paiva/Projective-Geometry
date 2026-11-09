@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this material, please cite it as below."
+title: "Projective Geometry: an interactive course"
+type: software
+authors:
+  - family-names: "Álvarez Paiva"
+    given-names: "Juan Carlos"
+    affiliation: "Laboratoire Paul Painlevé, Université de Lille, France"
+license: CC-BY-SA-4.0
+url: "https://alvarez-paiva.github.io/Projective-Geometry/"
+repository-code: "https://github.com/Alvarez-Paiva/Projective-Geometry"
+date-released: "2026-11-09"
+keywords:
+  - projective geometry
+  - cross ratio
+  - conics
+  - duality
+  - CindyJS
+  - interactive geometry
