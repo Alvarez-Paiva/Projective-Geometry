@@ -1,5 +1,7 @@
 # Projective Geometry · Géométrie projective · Geometría proyectiva
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24080824.svg)](https://doi.org/10.5281/zenodo.24080824)
+
 An interactive course on projective geometry by Juan Carlos Álvarez Paiva
 (Laboratoire Paul Painlevé, Université de Lille).
 
@@ -24,4 +26,9 @@ static HTML; there is no build step on GitHub. To edit the lecture, see
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/); scripts: GNU GPL v3 or later;
 CindyJS: Apache 2.0; reproduced paintings: public domain. See [`LICENSE.md`](LICENSE.md).
 
-To cite, use the "Cite this repository" button (from `CITATION.cff`).
+To cite, use the "Cite this repository" button (from `CITATION.cff`), or:
+
+> J. C. Álvarez Paiva, *Projective Geometry: an interactive course*, Zenodo, 2026.
+> https://doi.org/10.5281/zenodo.24080824
+
+This DOI covers all versions and always points to the latest one.

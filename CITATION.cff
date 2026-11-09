@@ -7,6 +7,11 @@ authors:
     given-names: "Juan Carlos"
     affiliation: "Laboratoire Paul Painlevé, Université de Lille, France"
 license: CC-BY-SA-4.0
+doi: "10.5281/zenodo.24080824"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24080824"
+    description: "Concept DOI (all versions) on Zenodo"
 url: "https://alvarez-paiva.github.io/Projective-Geometry/"
 repository-code: "https://github.com/Alvarez-Paiva/Projective-Geometry"
 date-released: "2026-11-09"
